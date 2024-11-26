@@ -24,5 +24,10 @@
   "date": "Ամսաթիվ",
   "time": "Ժամ",
   "comfort": "Կոմֆորտ",
-  "economy": "Էկոնոմ"
+  "economy": "Էկոնոմ",
+  "yourOrderHasBeenConfirmed": "Ձեր պատվերը հաստատված է",
+  "confirmationReceipt": "Դուք կստանաք պատվերի հաստատման Ձեր կտրոնը։",
+  "thankYouForUsingOurServices": "Շնորհակալություն մեր ծառայություններից օգտվելու համար",
+  "cancelOrderError": "Պատվերը հնարավոր է չեղարկել ոչ ուշ քան երթի մեկնարկից մեկ ժամ շուտ։",
+  "orderSuccessfullyCanceled": "Պատվերը հաջողությամբ չեղարկվել է"
 }

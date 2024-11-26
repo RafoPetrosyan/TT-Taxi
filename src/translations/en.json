@@ -24,5 +24,10 @@
   "date": "Date",
   "time": "Time",
   "comfort": "Comfort",
-  "economy": "Economy"
+  "economy": "Economy",
+  "yourOrderHasBeenConfirmed": "Your order has been confirmed.",
+  "confirmationReceipt": "You will receive your order confirmation receipt.",
+  "thankYouForUsingOurServices": "Thank you for using our services.",
+  "cancelOrderError": "The order can be canceled no later than one hour before the start of the march.",
+  "orderSuccessfullyCanceled": "Order successfully canceled."
 }

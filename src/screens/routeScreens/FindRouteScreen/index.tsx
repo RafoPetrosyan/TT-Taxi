@@ -21,6 +21,8 @@ import PeopleIcon from '../../../assets/svg/PeopleIcon';
 import styles from './style.ts';
 import moment from 'moment';
 import CalendarIcon from '../../../assets/svg/CalendarIcon';
+import { useAppDispatch } from '../../../store/hooks.ts';
+import { openModal } from '../../../store/modals';
 
 const passengersCounts = [1, 2, 3, 4];
 const places = [
@@ -31,13 +33,16 @@ const places = [
 
 const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const dispatch = useAppDispatch();
    const [openDatePicker, setOpenDatePicker] = useState(false);
    const [openTimePicker, setOpenTimePicker] = useState(false);
    const [selectedCarType, setSelectedCarType] = useState('comfort');
    const [date, setDate] = useState<Date | null>(null);
    const [time, setTime] = useState<Date | null>(null);
 
-   const onSubmit = () => {};
+   const onSubmit = () => {
+      dispatch(openModal({ type: 'ORDER_CANCEL_COMPLETE', content: { x: 2 } }));
+   };
 
    return (
       <KeyboardAvoidingView

@@ -1,8 +1,6 @@
 const STACKS = {
-   DIRECTIONS: 'Directions',
-   DRIVERS: 'Drivers',
-   CARS: 'Cars',
-   ORDERS: 'Orders',
+   AUTH_STACK: 'AuthStack',
+   CLIENT_STACK: 'ClientStack',
 } as const;
 
 export default STACKS;
