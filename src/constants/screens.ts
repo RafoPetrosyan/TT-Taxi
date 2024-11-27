@@ -6,6 +6,8 @@ const SCREENS = {
    OTP_VERIFICATION: 'OTPVerificationScreen',
    FIND_ROUTE: 'FindRouteScreen',
    MY_ROUTES: 'MyRoutesScreen',
+   ADMIN_CARS: 'AdminCarsScreen',
+   ADMIN_CARS_FORM: 'AdminCarsFormScreen',
 } as const;
 
 export default SCREENS;

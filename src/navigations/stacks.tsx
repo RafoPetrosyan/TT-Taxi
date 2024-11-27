@@ -10,6 +10,7 @@ import PhoneSignInScreen from '../screens/authScreens/PhoneSignInScreen';
 import STACKS from '../constants/stacks.ts';
 import { AuthParamList, ClientParamList, RootParamList } from './types.ts';
 import MyRoutesScreen from '../screens/routeScreens/MyRoutesScreen';
+import AdminTabs from './adminTabs';
 
 const RootStack = createStackNavigator<RootParamList>();
 const AuthStack = createStackNavigator<AuthParamList>();
@@ -35,7 +36,8 @@ const ClientNavigator = () => (
 const Stacks = () => {
    return (
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
-         {/*<RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />*/}
+         <RootStack.Screen name={STACKS.ADMIN_STACK} component={AdminTabs} />
+         <RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />
          <RootStack.Screen name={STACKS.CLIENT_STACK} component={ClientNavigator} />
       </RootStack.Navigator>
    );

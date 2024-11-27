@@ -1,25 +1,26 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import LinearGradient from 'react-native-linear-gradient';
+import { FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { ScreenProps } from '../../../types';
 import styles from './style.ts';
-import RouteDirectionIcon from '../../../assets/svg/RouteDirectionIcon';
 import normalize from '../../../utils/normalize.ts';
-import CalendarIcon from '../../../assets/svg/CalendarIcon.js';
+import { useTranslation } from 'react-i18next';
+import LinearGradient from 'react-native-linear-gradient';
+import RouteDirectionIcon from '../../../assets/svg/RouteDirectionIcon';
+import CalendarIcon from '../../../assets/svg/CalendarIcon';
 import ClockIcon from '../../../assets/svg/ClockIcon';
 import PeopleIcon from '../../../assets/svg/PeopleIcon';
 import LocationIcon from '../../../assets/svg/LocationIcon';
 import CarIcon from '../../../assets/svg/CarIcon';
+import { DEVICE_WIDTH } from '../../../constants';
 
-interface Car {
+interface Order {
    id: string;
    routeDirection: string;
    date: string;
    time: string;
    numberOfPassengers: number;
-   address: string;
-   car: string;
+   phoneNumber: string;
+   carType: string;
 }
 
 const data = [
@@ -29,8 +30,8 @@ const data = [
       date: '12.05.2025',
       time: '12:30',
       numberOfPassengers: 2,
-      address: 'Գյումրու ավտոկայան',
-      car: 'Կոմֆորտ / Tesla / 55 TT 555',
+      phoneNumber: '+374 93 11 20 94',
+      carType: 'Կոմֆորտ',
    },
    {
       id: '2',
@@ -38,17 +39,17 @@ const data = [
       date: '12.05.2025',
       time: '12:30',
       numberOfPassengers: 2,
-      address: 'Գյումրու ավտոկայան',
-      car: 'Կոմֆորտ / Tesla / 55 TT 555',
+      phoneNumber: '+374 93 11 20 94',
+      carType: 'Կոմֆորտ',
    },
 ];
 
-const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
+const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
 
    const onEndReached = () => {};
 
-   const renderItem = ({ item }: { item: Car }) => {
+   const renderItem = ({ item }: { item: Order }) => {
       return (
          <View style={styles.renderItem}>
             <LinearGradient
@@ -105,7 +106,7 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
       <View style={styles.container}>
          <View style={styles.contents}>
             <View style={styles.topContent}>
-               <Text style={styles.title}>{t('myRoutes')}</Text>
+               <Text style={styles.title}>Պատվերներ</Text>
                <FlatList
                   data={data}
                   renderItem={renderItem}
@@ -116,6 +117,7 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReachedThreshold={1}
                   onEndReached={onEndReached}
                   style={{
+                     width: DEVICE_WIDTH,
                      paddingTop: normalize(41),
                   }}
                />
@@ -125,4 +127,4 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
    );
 };
 
-export default MyRoutesScreen;
+export default OrdersScreen;

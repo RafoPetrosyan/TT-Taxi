@@ -20,7 +20,7 @@ import DropDownIcon from '../../../assets/svg/DropDownIcon';
 import PeopleIcon from '../../../assets/svg/PeopleIcon';
 import styles from './style.ts';
 import moment from 'moment';
-import CalendarIcon from '../../../assets/svg/CalendarIcon';
+import CalendarIcon from '../../../assets/svg/CalendarIcon.js';
 import { useAppDispatch } from '../../../store/hooks.ts';
 import { openModal } from '../../../store/modals';
 

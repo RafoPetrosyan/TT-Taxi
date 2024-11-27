@@ -1,6 +1,7 @@
 export type RootParamList = {
    AuthStack: undefined;
    ClientStack: undefined;
+   AdminStack: undefined;
 };
 
 export type AuthParamList = {
@@ -14,4 +15,11 @@ export type AuthParamList = {
 export type ClientParamList = {
    FindRouteScreen: undefined;
    MyRoutesScreen: undefined;
+};
+
+export type AdminTabParamList = {
+   AdminScheduleStack: undefined;
+   AdminDriversStack: undefined;
+   AdminCarsStack: undefined;
+   AdminOrdersStack: undefined;
 };
