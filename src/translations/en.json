@@ -29,5 +29,11 @@
   "confirmationReceipt": "You will receive your order confirmation receipt.",
   "thankYouForUsingOurServices": "Thank you for using our services.",
   "cancelOrderError": "The order can be canceled no later than one hour before the start of the march.",
-  "orderSuccessfullyCanceled": "Order successfully canceled."
+  "orderSuccessfullyCanceled": "Order successfully canceled.",
+  "myRoutes": "My Routes",
+  "directionOfTravel": "Direction of travel",
+  "address": "Address",
+  "car": "Car",
+  "cancel": "Cancel",
+  "edit": "Edit"
 }

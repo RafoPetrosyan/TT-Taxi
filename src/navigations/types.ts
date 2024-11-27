@@ -13,4 +13,5 @@ export type AuthParamList = {
 
 export type ClientParamList = {
    FindRouteScreen: undefined;
+   MyRoutesScreen: undefined;
 };

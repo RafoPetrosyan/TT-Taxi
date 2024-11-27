@@ -26,7 +26,9 @@ const OrderCancelComplete: React.FC = () => {
                      <CloseModalIcon />
                   </TouchableOpacity>
                </View>
-               <SuccessIcon />
+               <View style={{ marginTop: normalize(89, true) }}>
+                  <SuccessIcon />
+               </View>
                <Text style={styles.subTitle}>{t('orderSuccessfullyCanceled')}</Text>
             </View>
          </View>
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
    },
    modalContent: {
-      width: '80%',
+      width: normalize(326),
       backgroundColor: 'white',
       padding: 20,
       borderRadius: 16,
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
       fontFamily: fontFamilies.MONTSERRAT['300'],
       marginTop: normalize(14, true),
       textAlign: 'center',
+      marginBottom: normalize(119, true),
    },
 });
 

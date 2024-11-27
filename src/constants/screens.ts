@@ -5,6 +5,7 @@ const SCREENS = {
    SIGN_IN_SCREEN: 'SignInScreen',
    OTP_VERIFICATION: 'OTPVerificationScreen',
    FIND_ROUTE: 'FindRouteScreen',
+   MY_ROUTES: 'MyRoutesScreen',
 } as const;
 
 export default SCREENS;

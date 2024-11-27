@@ -4,7 +4,7 @@ const COLORS = {
    textColor: '#333',
    primary: '#2e7d32',
    secondary: '#4caf50',
-   danger: 'rgb(244,76,76)',
+   danger: '#DD5151',
    borderColor: '#59b851',
    white: '#ffffff',
    black: '#000000',

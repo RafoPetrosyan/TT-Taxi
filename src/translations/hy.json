@@ -29,5 +29,11 @@
   "confirmationReceipt": "Դուք կստանաք պատվերի հաստատման Ձեր կտրոնը։",
   "thankYouForUsingOurServices": "Շնորհակալություն մեր ծառայություններից օգտվելու համար",
   "cancelOrderError": "Պատվերը հնարավոր է չեղարկել ոչ ուշ քան երթի մեկնարկից մեկ ժամ շուտ։",
-  "orderSuccessfullyCanceled": "Պատվերը հաջողությամբ չեղարկվել է"
+  "orderSuccessfullyCanceled": "Պատվերը հաջողությամբ չեղարկվել է",
+  "myRoutes": "Իմ երթուղիները",
+  "directionOfTravel": "Երթի ուղղությունը",
+  "address": "Հասցե",
+  "car": "Մեքենա",
+  "cancel": "Չեղարկել",
+  "edit": "Փոփոխել"
 }

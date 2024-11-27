@@ -26,7 +26,9 @@ const OrderCancelError: React.FC = () => {
                      <CloseModalIcon />
                   </TouchableOpacity>
                </View>
-               <ErrorIcon />
+               <View style={{ marginTop: normalize(89, true) }}>
+                  <ErrorIcon />
+               </View>
                <Text style={styles.subTitle}>{t('cancelOrderError')}</Text>
             </View>
          </View>
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
       fontFamily: fontFamilies.MONTSERRAT['300'],
       marginTop: normalize(14, true),
       textAlign: 'center',
+      marginBottom: normalize(119, true),
    },
 });
 

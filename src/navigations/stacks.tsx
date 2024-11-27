@@ -9,6 +9,7 @@ import SignUpScreen from '../screens/authScreens/SignUpScreen';
 import PhoneSignInScreen from '../screens/authScreens/PhoneSignInScreen';
 import STACKS from '../constants/stacks.ts';
 import { AuthParamList, ClientParamList, RootParamList } from './types.ts';
+import MyRoutesScreen from '../screens/routeScreens/MyRoutesScreen';
 
 const RootStack = createStackNavigator<RootParamList>();
 const AuthStack = createStackNavigator<AuthParamList>();
@@ -26,6 +27,7 @@ const AuthNavigator = () => (
 
 const ClientNavigator = () => (
    <ClientStack.Navigator screenOptions={{ headerShown: false }}>
+      <ClientStack.Screen name={SCREENS.MY_ROUTES} component={MyRoutesScreen} />
       <ClientStack.Screen name={SCREENS.FIND_ROUTE} component={FindRouteScreen} />
    </ClientStack.Navigator>
 );

@@ -41,7 +41,7 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const [time, setTime] = useState<Date | null>(null);
 
    const onSubmit = () => {
-      dispatch(openModal({ type: 'ORDER_CANCEL_COMPLETE', content: { x: 2 } }));
+      dispatch(openModal({ type: 'ORDER_CANCEL_ERROR', content: { x: 2 } }));
    };
 
    return (

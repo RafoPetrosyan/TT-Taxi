@@ -217,13 +217,11 @@ const styles = StyleSheet.create({
    },
    carTypeShadow: {
       backgroundColor: '#fff',
-      borderRadius: 8, // Optional, for rounded corners
-      // iOS shadow properties
+      borderRadius: 8,
       shadowColor: '#000000',
       shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.25, // Corresponds to 40% opacity (#00000040)
+      shadowOpacity: 0.25,
       shadowRadius: 4,
-      // Android shadow (elevation)
       elevation: 4,
    },
    cartTypeTop: {
