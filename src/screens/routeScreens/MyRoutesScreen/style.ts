@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import COLORS from '../../../constants/colors.ts';
 import normalize from '../../../utils/normalize.ts';
 import { fontFamilies } from '../../../constants/fonts.ts';
-import { DEVICE_WIDTH } from '../../../constants';
 
 const styles = StyleSheet.create({
    container: {
@@ -29,7 +28,8 @@ const styles = StyleSheet.create({
       textAlign: 'center',
    },
    renderItem: {
-      width: DEVICE_WIDTH - normalize(30),
+      width: '95%',
+      maxWidth: normalize(354),
       backgroundColor: '#fff',
       borderRadius: 14,
       shadowColor: '#000000',
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
       shadowRadius: 8,
       elevation: 8,
       flexDirection: 'row',
-      height: normalize(249),
       marginBottom: 20,
+      marginHorizontal: 'auto',
    },
    leftContent: {
       backgroundColor: '#fff',

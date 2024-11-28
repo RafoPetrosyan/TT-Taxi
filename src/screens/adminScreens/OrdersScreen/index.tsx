@@ -5,13 +5,8 @@ import styles from './style.ts';
 import normalize from '../../../utils/normalize.ts';
 import { useTranslation } from 'react-i18next';
 import LinearGradient from 'react-native-linear-gradient';
-import RouteDirectionIcon from '../../../assets/svg/RouteDirectionIcon';
-import CalendarIcon from '../../../assets/svg/CalendarIcon';
-import ClockIcon from '../../../assets/svg/ClockIcon';
-import PeopleIcon from '../../../assets/svg/PeopleIcon';
-import LocationIcon from '../../../assets/svg/LocationIcon';
-import CarIcon from '../../../assets/svg/CarIcon';
 import { DEVICE_WIDTH } from '../../../constants';
+import COLORS from '../../../constants/colors.ts';
 
 interface Order {
    id: string;
@@ -21,26 +16,29 @@ interface Order {
    numberOfPassengers: number;
    phoneNumber: string;
    carType: string;
+   confirmed: boolean;
 }
 
 const data = [
    {
       id: '1',
-      routeDirection: 'Գյումրի - Երևան',
+      routeDirection: 'Գյումրի-Երևան',
       date: '12.05.2025',
       time: '12:30',
       numberOfPassengers: 2,
       phoneNumber: '+374 93 11 20 94',
       carType: 'Կոմֆորտ',
+      confirmed: false,
    },
    {
       id: '2',
-      routeDirection: 'Գյումրի - Երևան',
+      routeDirection: 'Գյումրի-Երևան',
       date: '12.05.2025',
       time: '12:30',
       numberOfPassengers: 2,
       phoneNumber: '+374 93 11 20 94',
       carType: 'Կոմֆորտ',
+      confirmed: true,
    },
 ];
 
@@ -52,49 +50,40 @@ const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const renderItem = ({ item }: { item: Order }) => {
       return (
          <View style={styles.renderItem}>
-            <LinearGradient
-               style={styles.leftContent}
-               colors={['#D6990E', '#E2AB2D', '#FFD77D']}
-               start={{ x: 0.0159, y: 0 }}
-               end={{ x: 1, y: 0 }}
-            />
+            {item.confirmed ? (
+               <View style={[styles.leftContent, { backgroundColor: COLORS.confirmedColor }]} />
+            ) : (
+               <LinearGradient
+                  style={styles.leftContent}
+                  colors={['#D6990E', '#E2AB2D', '#FFD77D']}
+                  start={{ x: 0.0159, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+               />
+            )}
             <View style={styles.rightContent}>
                <View style={styles.row}>
-                  <RouteDirectionIcon />
-                  <Text style={styles.rowKey}>{t('directionOfTravel')}:</Text>
-                  <Text style={styles.rowValue}>{item.routeDirection}</Text>
+                  <Text style={styles.rowValue}>{item.routeDirection}:</Text>
+                  <Text style={styles.rowKey}>{`Օր: ${item.date}`}</Text>
                </View>
                <View style={styles.row}>
-                  <CalendarIcon width={24} height={24} />
-                  <Text style={styles.rowKey}>{t('date')}:</Text>
-                  <Text style={styles.rowValue}>{item.date}</Text>
+                  <Text style={styles.rowKey}>{`Հեռ. ${item.phoneNumber}`}</Text>
+                  <Text style={styles.rowValue}>{`Ժամ: ${item.time}`}</Text>
                </View>
                <View style={styles.row}>
-                  <ClockIcon width={24} height={24} />
                   <Text style={styles.rowKey}>{t('time')}:</Text>
                   <Text style={styles.rowValue}>{item.time}</Text>
                </View>
                <View style={styles.row}>
-                  <PeopleIcon width={24} height={24} />
-                  <Text style={styles.rowKey}>{t('numberOfPassengers')}:</Text>
-                  <Text style={styles.rowValue}>{item.numberOfPassengers}</Text>
+                  <Text style={styles.rowKey}>{`Ուղևոր․ ${item.numberOfPassengers}`}:</Text>
                </View>
                <View style={styles.row}>
-                  <LocationIcon width={24} height={24} stroke={'#D59608'} />
-                  <Text style={styles.rowKey}>{t('address')}:</Text>
-                  <Text style={styles.rowValue}>{item.address}</Text>
-               </View>
-               <View style={styles.row}>
-                  <CarIcon width={24} height={24} />
-                  <Text style={styles.rowKey}>{t('car')}:</Text>
-                  <Text style={styles.rowValue}>{item.car}</Text>
-               </View>
-               <View style={styles.buttons}>
+                  <Text style={styles.rowKey}>{`Տեսակ․ ${item.carType}`}:</Text>
                   <TouchableOpacity>
-                     <Text style={styles.cancel}>{t('cancel')}</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                     <Text style={[styles.cancel, styles.edit]}>{t('edit')}</Text>
+                     <Text
+                        style={[styles.confirm, item.confirmed && { color: COLORS.confirmedColor }]}
+                     >
+                        {item.confirmed ? 'Հաստատված' : 'Հաստատել'}
+                     </Text>
                   </TouchableOpacity>
                </View>
             </View>

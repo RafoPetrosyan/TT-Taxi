@@ -11,6 +11,7 @@ import ClockIcon from '../../../assets/svg/ClockIcon';
 import PeopleIcon from '../../../assets/svg/PeopleIcon';
 import LocationIcon from '../../../assets/svg/LocationIcon';
 import CarIcon from '../../../assets/svg/CarIcon';
+import { DEVICE_WIDTH } from '../../../constants';
 
 interface Car {
    id: string;
@@ -116,6 +117,7 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReachedThreshold={1}
                   onEndReached={onEndReached}
                   style={{
+                     width: DEVICE_WIDTH,
                      paddingTop: normalize(41),
                   }}
                />

@@ -13,6 +13,7 @@ const COLORS = {
    brown: '#D59608',
    inputBorder: '#DEDEE8',
    inputPlaceholder: '#8080808C',
+   confirmedColor: '#269B26',
 };
 
 export default COLORS;

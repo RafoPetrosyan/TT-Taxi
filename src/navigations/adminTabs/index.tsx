@@ -5,7 +5,6 @@ import CarIcon from '../../assets/svg/CarIcon';
 import STACKS from '../../constants/stacks.ts';
 import COLORS from '../../constants/colors.ts';
 import { AdminTabParamList } from '../types.ts';
-import CarsStackScreen from './carsStack';
 import OrdersIcon from '../../assets/svg/OrdersIcon';
 import PeopleIcon from '../../assets/svg/PeopleIcon';
 import CalendarIcon from '../../assets/svg/CalendarIcon';
@@ -13,6 +12,7 @@ import DriversScreen from '../../screens/adminScreens/DriversScreen';
 import OrdersScreen from '../../screens/adminScreens/OrdersScreen';
 import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
 import { fontFamilies } from '../../constants/fonts.ts';
+import CarsScreen from '../../screens/adminScreens/CarsScreen';
 
 const Tab = createBottomTabNavigator<AdminTabParamList>();
 
@@ -89,7 +89,7 @@ const AdminTabs: React.FC = () => {
          />
          <Tab.Screen
             name={STACKS.ADMIN_CARS}
-            component={CarsStackScreen}
+            component={CarsScreen}
             options={{
                tabBarLabel: 'Մեքենա',
                tabBarIcon: ({ focused }) => (

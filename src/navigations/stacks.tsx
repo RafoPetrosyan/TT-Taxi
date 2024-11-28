@@ -37,8 +37,8 @@ const Stacks = () => {
    return (
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
          <RootStack.Screen name={STACKS.ADMIN_STACK} component={AdminTabs} />
-         <RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />
          <RootStack.Screen name={STACKS.CLIENT_STACK} component={ClientNavigator} />
+         <RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />
       </RootStack.Navigator>
    );
 };
