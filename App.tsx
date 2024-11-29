@@ -22,7 +22,6 @@ const App: React.FC = () => {
             <SafeAreaProvider>
                <NavigationContainer ref={navigationRef}>
                   <Stacks />
-                  {/*<Tabs />*/}
                   <ModalRoot content={undefined} />
                </NavigationContainer>
             </SafeAreaProvider>

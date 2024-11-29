@@ -28,16 +28,16 @@ const AuthNavigator = () => (
 
 const ClientNavigator = () => (
    <ClientStack.Navigator screenOptions={{ headerShown: false }}>
-      <ClientStack.Screen name={SCREENS.MY_ROUTES} component={MyRoutesScreen} />
       <ClientStack.Screen name={SCREENS.FIND_ROUTE} component={FindRouteScreen} />
+      <ClientStack.Screen name={SCREENS.MY_ROUTES} component={MyRoutesScreen} />
    </ClientStack.Navigator>
 );
 
 const Stacks = () => {
    return (
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
-         <RootStack.Screen name={STACKS.ADMIN_STACK} component={AdminTabs} />
          <RootStack.Screen name={STACKS.CLIENT_STACK} component={ClientNavigator} />
+         <RootStack.Screen name={STACKS.ADMIN_STACK} component={AdminTabs} />
          <RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />
       </RootStack.Navigator>
    );

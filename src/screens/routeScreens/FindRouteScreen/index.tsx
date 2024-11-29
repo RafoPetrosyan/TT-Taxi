@@ -7,22 +7,26 @@ import {
    ScrollView,
    Image,
 } from 'react-native';
+import i18n from 'i18next';
+import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import DatePicker from 'react-native-date-picker';
 import SelectDropdown from 'react-native-select-dropdown';
 import { IS_IOS_PLATFORM } from '../../../constants';
 import { ScreenProps } from '../../../types';
-import DownIcon from '../../../assets/svg/DownIcon';
-import LocationIcon from '../../../assets/svg/LocationIcon';
-import ReplaceIcon from '../../../assets/svg/ReplaceIcon';
-import DropDownIcon from '../../../assets/svg/DropDownIcon';
-import PeopleIcon from '../../../assets/svg/PeopleIcon';
-import styles from './style.ts';
-import moment from 'moment';
-import CalendarIcon from '../../../assets/svg/CalendarIcon.js';
 import { useAppDispatch } from '../../../store/hooks.ts';
 import { openModal } from '../../../store/modals';
+import COLORS from '../../../constants/colors.ts';
+import {
+   CalendarIcon,
+   DownIcon,
+   DropDownIcon,
+   LocationIcon,
+   PeopleIcon,
+   ReplaceIcon,
+} from '../../../assets/svg';
+import styles from './style.ts';
 
 const passengersCounts = [1, 2, 3, 4];
 const places = [
@@ -41,7 +45,7 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const [time, setTime] = useState<Date | null>(null);
 
    const onSubmit = () => {
-      dispatch(openModal({ type: 'ORDER_CANCEL_ERROR', content: { x: 2 } }));
+      dispatch(openModal({ type: 'REVIEW', content: { x: 2 } }));
    };
 
    return (
@@ -211,6 +215,11 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
                                  setDate(selectedDate);
                               }}
                               onCancel={() => setOpenDatePicker(false)}
+                              confirmText={t('confirm')}
+                              cancelText={t('cancel')}
+                              title={t('selectDate')}
+                              locale={i18n.language}
+                              buttonColor={COLORS.brown}
                            />
 
                            <TouchableOpacity
@@ -235,6 +244,10 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
                                  setTime(selectedDate);
                               }}
                               onCancel={() => setOpenTimePicker(false)}
+                              confirmText={t('confirm')}
+                              cancelText={t('cancel')}
+                              title={t('selectTime')}
+                              buttonColor={COLORS.brown}
                            />
                         </View>
                      </View>

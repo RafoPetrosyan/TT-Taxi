@@ -36,5 +36,10 @@
   "car": "Car",
   "cancel": "Cancel",
   "edit": "Edit",
-  "orders": "Orders"
+  "orders": "Orders",
+  "selectDate": "Select Date",
+  "selectTime": "Select Time",
+  "rateTheMarch": "Rate the march",
+  "send": "Send",
+  "reviewDesc": "Thank you for using our services."
 }
