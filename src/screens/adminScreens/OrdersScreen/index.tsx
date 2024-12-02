@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import LinearGradient from 'react-native-linear-gradient';
 import { DEVICE_WIDTH } from '../../../constants';
 import COLORS from '../../../constants/colors.ts';
+import { useAppDispatch } from '../../../store/hooks.ts';
+import { openModal } from '../../../store/modals';
 
 interface Order {
    id: string;
@@ -44,12 +46,17 @@ const data = [
 
 const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const dispatch = useAppDispatch();
 
    const onEndReached = () => {};
 
+   const showOrderDetails = () => {
+      dispatch(openModal({ type: 'CREATE_ROUTE' }));
+   };
+
    const renderItem = ({ item }: { item: Order }) => {
       return (
-         <View style={styles.renderItem}>
+         <TouchableOpacity style={styles.renderItem} onPress={showOrderDetails}>
             {item.confirmed ? (
                <View style={[styles.leftContent, { backgroundColor: COLORS.confirmedColor }]} />
             ) : (
@@ -78,7 +85,7 @@ const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
                </View>
                <View style={styles.row}>
                   <Text style={styles.rowKey}>{`Տեսակ․ ${item.carType}`}:</Text>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={showOrderDetails}>
                      <Text
                         style={[styles.confirm, item.confirmed && { color: COLORS.confirmedColor }]}
                      >
@@ -87,7 +94,7 @@ const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                </View>
             </View>
-         </View>
+         </TouchableOpacity>
       );
    };
 

@@ -2,14 +2,14 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SCREENS from '../constants/screens.ts';
 import WelcomeScreen from '../screens/authScreens/WelcomeScreen';
-import FindRouteScreen from '../screens/routeScreens/FindRouteScreen';
+import FindRouteScreen from '../screens/clientScreens/FindRouteScreen';
 import OTPVerificationScreen from '../screens/authScreens/OTPVerificationScreen';
 import SignInScreen from '../screens/authScreens/SignInScreen';
 import SignUpScreen from '../screens/authScreens/SignUpScreen';
 import PhoneSignInScreen from '../screens/authScreens/PhoneSignInScreen';
 import STACKS from '../constants/stacks.ts';
 import { AuthParamList, ClientParamList, RootParamList } from './types.ts';
-import MyRoutesScreen from '../screens/routeScreens/MyRoutesScreen';
+import MyRoutesScreen from '../screens/clientScreens/MyRoutesScreen';
 import AdminTabs from './adminTabs';
 
 const RootStack = createStackNavigator<RootParamList>();
@@ -36,8 +36,8 @@ const ClientNavigator = () => (
 const Stacks = () => {
    return (
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
-         <RootStack.Screen name={STACKS.CLIENT_STACK} component={ClientNavigator} />
          <RootStack.Screen name={STACKS.ADMIN_STACK} component={AdminTabs} />
+         <RootStack.Screen name={STACKS.CLIENT_STACK} component={ClientNavigator} />
          <RootStack.Screen name={STACKS.AUTH_STACK} component={AuthNavigator} />
       </RootStack.Navigator>
    );

@@ -1,28 +1,22 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { closeModal } from '../../store/modals';
 import CloseModalIcon from '../../assets/svg/CloseModalIcon';
 import { useTranslation } from 'react-i18next';
 import COLORS from '../../constants/colors.ts';
 import { fontFamilies } from '../../constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
 import ErrorIcon from '../../assets/svg/ErrorIcon';
+import { ModalProps } from '../types.ts';
 
-const OrderCancelError: React.FC = () => {
+const OrderCancel: React.FC<ModalProps> = ({ onClose }) => {
    const { t } = useTranslation();
-   const dispatch = useDispatch();
-
-   const handleClose = () => {
-      dispatch(closeModal());
-   };
 
    return (
       <Modal visible={true} transparent animationType="fade">
          <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
                <View style={styles.header}>
-                  <TouchableOpacity onPress={handleClose}>
+                  <TouchableOpacity onPress={onClose}>
                      <CloseModalIcon />
                   </TouchableOpacity>
                </View>
@@ -30,6 +24,9 @@ const OrderCancelError: React.FC = () => {
                   <ErrorIcon />
                </View>
                <Text style={styles.subTitle}>{t('cancelOrderError')}</Text>
+               <TouchableOpacity style={styles.cancelButton}>
+                  <Text>{t('cancel')}</Text>
+               </TouchableOpacity>
             </View>
          </View>
       </Modal>
@@ -65,7 +62,22 @@ const styles = StyleSheet.create({
       marginTop: normalize(14, true),
       textAlign: 'center',
       marginBottom: normalize(119, true),
+      maxWidth: normalize(267),
+   },
+   cancelButton: {
+      width: normalize(289),
+      height: normalize(42),
+      borderRadius: 14,
+      backgroundColor: '#FFF3F3',
+      justifyContent: 'center',
+      alignItems: 'center',
+   },
+   cancelText: {
+      color: '#CC252B',
+      fontSize: 14,
+      fontWeight: '500',
+      fontFamily: fontFamilies.MONTSERRAT['500'],
    },
 });
 
-export default OrderCancelError;
+export default OrderCancel;

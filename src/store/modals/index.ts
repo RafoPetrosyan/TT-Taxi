@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ModalPayload {
    type: string;
-   content: any;
+   content?: any;
 }
 
 export interface ModalState {

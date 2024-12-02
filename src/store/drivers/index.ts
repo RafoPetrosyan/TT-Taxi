@@ -21,17 +21,7 @@ const initialState: DriversState = {
 const driversSlice = createSlice({
    name: 'drivers',
    initialState,
-   reducers: {
-      setDrivers: (state, action: PayloadAction<Driver[]>) => {
-         state.drivers = action.payload;
-      },
-      addDriver: (state, action: PayloadAction<Driver>) => {
-         state.drivers.push(action.payload);
-      },
-      removeDriver: (state, action: PayloadAction<string>) => {
-         state.drivers = state.drivers.filter((driver) => driver.id !== action.payload);
-      },
-   },
+   reducers: {},
    extraReducers: (builder) => {
       builder
          .addCase(fetchDrivers.pending, (state) => {
@@ -47,5 +37,4 @@ const driversSlice = createSlice({
    },
 });
 
-export const { setDrivers, addDriver, removeDriver } = driversSlice.actions;
 export default driversSlice.reducer;

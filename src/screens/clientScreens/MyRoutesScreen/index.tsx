@@ -12,6 +12,8 @@ import PeopleIcon from '../../../assets/svg/PeopleIcon';
 import LocationIcon from '../../../assets/svg/LocationIcon';
 import CarIcon from '../../../assets/svg/CarIcon';
 import { DEVICE_WIDTH } from '../../../constants';
+import { useAppDispatch } from '../../../store/hooks.ts';
+import { openModal } from '../../../store/modals';
 
 interface Car {
    id: string;
@@ -46,8 +48,13 @@ const data = [
 
 const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const dispatch = useAppDispatch();
 
    const onEndReached = () => {};
+
+   const handleCancelOrder = () => {
+      dispatch(openModal({ type: 'ORDER_CANCEL' }));
+   };
 
    const renderItem = ({ item }: { item: Car }) => {
       return (
@@ -90,7 +97,7 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   <Text style={styles.rowValue}>{item.car}</Text>
                </View>
                <View style={styles.buttons}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={handleCancelOrder}>
                      <Text style={styles.cancel}>{t('cancel')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
