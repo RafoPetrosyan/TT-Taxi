@@ -1,9 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORE_LANGUAGE_KEY } from '../constants';
 import { en, hy, ru } from './index.ts';
-
-const STORE_LANGUAGE_KEY = 'settings.lang';
 
 const languageDetectorPlugin = {
    type: 'languageDetector',

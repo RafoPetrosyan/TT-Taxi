@@ -8,6 +8,8 @@ const SCREENS = {
    MY_ROUTES: 'MyRoutesScreen',
    ADMIN_CARS: 'AdminCarsScreen',
    ADMIN_CARS_FORM: 'AdminCarsFormScreen',
+   ADMIN_DRIVERS: 'AdminDriversScreen',
+   ADMIN_DRIVERS_FORM: 'AdminDriversFormScreen',
 } as const;
 
 export default SCREENS;

@@ -12,7 +12,8 @@ import DriversScreen from '../../screens/adminScreens/DriversScreen';
 import OrdersScreen from '../../screens/adminScreens/OrdersScreen';
 import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
 import { fontFamilies } from '../../constants/fonts.ts';
-import CarsScreen from '../../screens/adminScreens/CarsScreen';
+import CarsStackScreen from '../adminStacks/carsStack';
+import DriversStackScreen from '../adminStacks/driversStack';
 
 const Tab = createBottomTabNavigator<AdminTabParamList>();
 
@@ -75,7 +76,7 @@ const AdminTabs: React.FC = () => {
          />
          <Tab.Screen
             name={STACKS.ADMIN_DRIVERS}
-            component={DriversScreen}
+            component={DriversStackScreen}
             options={{
                tabBarLabel: 'Վարորդ',
                tabBarIcon: ({ focused }) => (
@@ -89,7 +90,7 @@ const AdminTabs: React.FC = () => {
          />
          <Tab.Screen
             name={STACKS.ADMIN_CARS}
-            component={CarsScreen}
+            component={CarsStackScreen}
             options={{
                tabBarLabel: 'Մեքենա',
                tabBarIcon: ({ focused }) => (

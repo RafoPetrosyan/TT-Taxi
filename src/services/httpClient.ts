@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { API_BASE_URL } from '../constants';
 
 const httpClient = axios.create({
-   baseURL: 'https://www.api.ksvshin.am',
+   baseURL: API_BASE_URL,
 });
 
 httpClient.interceptors.request.use(
