@@ -12,7 +12,7 @@ export type AuthParamList = {
    SignUpScreen: undefined;
 };
 
-export type ClientParamList = {
+export type ClientTabParamList = {
    FindRouteScreen: undefined;
    MyRoutesScreen: undefined;
 };
