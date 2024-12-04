@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View, TouchableOpacity, Image } from 'react-native';
+import { FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { ScreenProps } from '../../../types';
 import normalize from '../../../utils/normalize.ts';
 import { DEVICE_WIDTH } from '../../../constants';

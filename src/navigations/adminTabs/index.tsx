@@ -8,7 +8,6 @@ import { AdminTabParamList } from '../types.ts';
 import OrdersIcon from '../../assets/svg/OrdersIcon';
 import PeopleIcon from '../../assets/svg/PeopleIcon';
 import CalendarIcon from '../../assets/svg/CalendarIcon';
-import DriversScreen from '../../screens/adminScreens/DriversScreen';
 import OrdersScreen from '../../screens/adminScreens/OrdersScreen';
 import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
 import { fontFamilies } from '../../constants/fonts.ts';

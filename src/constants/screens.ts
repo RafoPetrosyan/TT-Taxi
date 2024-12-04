@@ -10,6 +10,8 @@ const SCREENS = {
    ADMIN_CARS_FORM: 'AdminCarsFormScreen',
    ADMIN_DRIVERS: 'AdminDriversScreen',
    ADMIN_DRIVERS_FORM: 'AdminDriversFormScreen',
+   ADMIN_SCHEDULES: 'AdminSchedulesScreen',
+   ADMIN_SCHEDULES_FORM: 'AdminSchedulesFormScreen',
 } as const;
 
 export default SCREENS;

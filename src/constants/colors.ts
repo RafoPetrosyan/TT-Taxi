@@ -14,6 +14,7 @@ const COLORS = {
    inputBorder: '#DEDEE8',
    inputPlaceholder: '#8080808C',
    confirmedColor: '#269B26',
+   statusBarBackground: '#FFFAF0',
 };
 
 export default COLORS;
