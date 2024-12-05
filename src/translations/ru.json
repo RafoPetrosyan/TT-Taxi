@@ -41,5 +41,15 @@
   "selectTime": "Выберите время",
   "rateTheMarch": "Оцените маршрут",
   "send": "Отправить",
-  "reviewDesc": "Спасибо за использование наших услуг."
+  "reviewDesc": "Спасибо за использование наших услуг.",
+  "myMarches": "My marches",
+  "followTheProgress": "Follow the progress",
+  "notifications": "Notifications",
+  "personalPage": "Personal Page",
+  "personalInformation": "Personal information",
+  "orderHistory": "Order history",
+  "settings": "Setting",
+  "privacy": "Privacy",
+  "contactUs": "Contact us",
+  "exit": "Exit"
 }

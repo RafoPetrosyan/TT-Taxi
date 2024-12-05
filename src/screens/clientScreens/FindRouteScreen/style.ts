@@ -17,8 +17,13 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       width: DEVICE_WIDTH - 20,
    },
+   headerContent: {
+      backgroundColor: COLORS.statusBarBackground,
+      width: '100%',
+      paddingBottom: normalize(24, true),
+   },
    topContent: {
-      marginTop: normalize(68, true),
+      marginTop: normalize(22, true),
       flex: 1,
    },
    selectRoutesContent: {
@@ -96,11 +101,9 @@ const styles = StyleSheet.create({
    bottomContent: {
       alignItems: 'center',
       marginBottom: normalize(58, true),
-      marginTop: normalize(15, true),
+      marginTop: normalize(62, true),
    },
-   form: {
-      marginTop: normalize(28, true),
-   },
+   form: {},
    title: {
       fontSize: 18,
       fontWeight: '500',

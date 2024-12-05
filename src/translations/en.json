@@ -41,5 +41,15 @@
   "selectTime": "Select Time",
   "rateTheMarch": "Rate the march",
   "send": "Send",
-  "reviewDesc": "Thank you for using our services."
+  "reviewDesc": "Thank you for using our services.",
+  "myMarches": "My marches",
+  "followTheProgress": "Follow the progress",
+  "notifications": "Notifications",
+  "personalPage": "Personal Page",
+  "personalInformation": "Personal information",
+  "orderHistory": "Order history",
+  "settings": "Setting",
+  "privacy": "Privacy",
+  "contactUs": "Contact us",
+  "exit": "Exit"
 }

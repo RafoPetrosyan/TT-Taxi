@@ -14,7 +14,9 @@ export type AuthParamList = {
 
 export type ClientTabParamList = {
    FindRouteScreen: undefined;
-   MyRoutesScreen: undefined;
+   MyRoutesStack: undefined;
+   NotificationsScreen: undefined;
+   ProfileScreen: undefined;
 };
 
 export type AdminTabParamList = {
@@ -22,4 +24,5 @@ export type AdminTabParamList = {
    AdminDriversStack: undefined;
    AdminCarsStack: undefined;
    AdminOrdersStack: undefined;
+   Add: undefined;
 };

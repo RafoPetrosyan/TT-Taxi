@@ -10,13 +10,18 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
    },
+   headerContent: {
+      backgroundColor: COLORS.statusBarBackground,
+      width: '100%',
+      paddingBottom: normalize(24, true),
+   },
    contents: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'space-between',
    },
    topContent: {
-      marginTop: normalize(68, true),
+      marginTop: normalize(22, true),
       flex: 1,
    },
    title: {
@@ -85,6 +90,21 @@ const styles = StyleSheet.create({
    edit: {
       color: '#343332',
       marginLeft: 14,
+   },
+   followProgress: {
+      width: normalize(172),
+      height: normalize(26),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#EAB337',
+      borderRadius: 46,
+   },
+   followText: {
+      color: COLORS.white,
+      fontSize: 12,
+      fontWeight: '400',
+      marginLeft: 2,
    },
 });
 

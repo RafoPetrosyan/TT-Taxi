@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import COLORS from '../../constants/colors.ts';
 import { fontFamilies } from '../../constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
-import ErrorIcon from '../../assets/svg/ErrorIcon';
+import WarningIcon from '../../assets/svg/WarningIcon';
 import { ModalProps } from '../types.ts';
 
 const OrderCancel: React.FC<ModalProps> = ({ onClose }) => {
@@ -21,11 +21,11 @@ const OrderCancel: React.FC<ModalProps> = ({ onClose }) => {
                   </TouchableOpacity>
                </View>
                <View style={{ marginTop: normalize(89, true) }}>
-                  <ErrorIcon />
+                  <WarningIcon />
                </View>
                <Text style={styles.subTitle}>{t('cancelOrderError')}</Text>
                <TouchableOpacity style={styles.cancelButton}>
-                  <Text>{t('cancel')}</Text>
+                  <Text style={styles.cancelText}>{t('cancel')}</Text>
                </TouchableOpacity>
             </View>
          </View>
@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
       width: normalize(289),
       height: normalize(42),
       borderRadius: 14,
-      backgroundColor: '#FFF3F3',
+      backgroundColor: '#CC252B',
       justifyContent: 'center',
       alignItems: 'center',
    },
    cancelText: {
-      color: '#CC252B',
+      color: COLORS.white,
       fontSize: 14,
       fontWeight: '500',
       fontFamily: fontFamilies.MONTSERRAT['500'],

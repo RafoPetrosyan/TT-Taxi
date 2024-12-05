@@ -1,6 +1,7 @@
 const STACKS = {
    AUTH_STACK: 'AuthStack',
    CLIENT_STACK: 'ClientStack',
+   MY_ROUTES_STACK: 'MyRoutesStack',
    ADMIN_ORDERS: 'AdminOrdersStack',
    ADMIN_SCHEDULE: 'AdminScheduleStack',
    ADMIN_DRIVERS: 'AdminDriversStack',

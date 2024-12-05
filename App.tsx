@@ -4,7 +4,7 @@ import { StatusBar, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { navigationRef } from './src/services/navigations.ts';
+import { navigationService } from './src/services/navigations.ts';
 import { store } from './src/store/store.ts';
 import Stacks from './src/navigations/stacks.tsx';
 import ModalRoot from './src/modals/ModalRoot/container.tsx';
@@ -20,7 +20,7 @@ const App: React.FC = () => {
          <View style={backgroundStyle}>
             <StatusBar barStyle={'dark-content'} backgroundColor="transparent" translucent={true} />
             <SafeAreaProvider>
-               <NavigationContainer ref={navigationRef}>
+               <NavigationContainer ref={navigationService.navigationRef}>
                   <Stacks />
                   <ModalRoot content={undefined} />
                </NavigationContainer>

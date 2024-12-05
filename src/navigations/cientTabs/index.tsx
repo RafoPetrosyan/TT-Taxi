@@ -4,30 +4,30 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IS_IOS_PLATFORM } from '../../constants';
 import STACKS from '../../constants/stacks.ts';
 import COLORS from '../../constants/colors.ts';
-import { ClientTabParamList } from '../types.ts';
-import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
-import CarsStackScreen from '../adminStacks/carsStack';
-import DriversStackScreen from '../adminStacks/driversStack';
 import HomeIcon from '../../assets/svg/HomeIcon';
 import RoutesIcon from '../../assets/svg/RoutesIcon';
 import NotificationIcon from '../../assets/svg/NotificationIcon';
 import ProfileIcon from '../../assets/svg/ProfileIcon';
 import FindRouteScreen from '../../screens/clientScreens/FindRouteScreen';
 import SCREENS from '../../constants/screens.ts';
+import MyRoutesStack from '../cientStacks/myRoutesStack';
+import NotificationsScreen from '../../screens/clientScreens/NotificationsScreen';
+import ProfileScreen from '../../screens/clientScreens/ProfileScreen';
+import { ClientTabParamList } from '../types.ts';
 
 const Tab = createBottomTabNavigator<ClientTabParamList>();
 
 const ClientTabs: React.FC = () => {
    const insets = useSafeAreaInsets();
 
-   console.log(insets.bottom, 'insets.bottom');
    return (
       <Tab.Navigator
          screenOptions={() => ({
             headerShown: false,
             tabBarShowLabel: false,
             tabBarStyle: {
-               height: IS_IOS_PLATFORM ? 85 : 55,
+               height: IS_IOS_PLATFORM ? 45 + insets.bottom : 55,
+               paddingTop: IS_IOS_PLATFORM ? 12 : 0,
                backgroundColor: COLORS.white,
                elevation: 4,
                shadowColor: '#000000',
@@ -55,8 +55,8 @@ const ClientTabs: React.FC = () => {
             }}
          />
          <Tab.Screen
-            name={STACKS.ADMIN_SCHEDULE}
-            component={ScheduleScreen}
+            name={STACKS.MY_ROUTES_STACK}
+            component={MyRoutesStack}
             options={{
                tabBarIcon: ({ focused }) => (
                   <RoutesIcon
@@ -68,8 +68,8 @@ const ClientTabs: React.FC = () => {
             }}
          />
          <Tab.Screen
-            name={STACKS.ADMIN_DRIVERS}
-            component={DriversStackScreen}
+            name={SCREENS.NOTIFICATIONS}
+            component={NotificationsScreen}
             options={{
                tabBarIcon: ({ focused }) => (
                   <NotificationIcon
@@ -80,8 +80,8 @@ const ClientTabs: React.FC = () => {
             }}
          />
          <Tab.Screen
-            name={STACKS.ADMIN_CARS}
-            component={CarsStackScreen}
+            name={SCREENS.PROFILE}
+            component={ProfileScreen}
             options={{
                tabBarIcon: ({ focused }) => <ProfileIcon stroke={focused && '#EAB337'} />,
             }}

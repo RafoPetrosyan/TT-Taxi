@@ -7,12 +7,13 @@ import {
    ScrollView,
    Image,
 } from 'react-native';
-import i18n from 'i18next';
-import moment from 'moment';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import DatePicker from 'react-native-date-picker';
 import SelectDropdown from 'react-native-select-dropdown';
+import i18n from 'i18next';
+import moment from 'moment';
 import { IS_IOS_PLATFORM } from '../../../constants';
 import { ScreenProps } from '../../../types';
 import { useAppDispatch } from '../../../store/hooks.ts';
@@ -27,6 +28,7 @@ import {
    ReplaceIcon,
 } from '../../../assets/svg';
 import styles from './style.ts';
+import normalize from '../../../utils/normalize.ts';
 
 const passengersCounts = [1, 2, 3, 4];
 const places = [
@@ -37,6 +39,7 @@ const places = [
 
 const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const insets = useSafeAreaInsets();
    const dispatch = useAppDispatch();
    const [openDatePicker, setOpenDatePicker] = useState(false);
    const [openTimePicker, setOpenTimePicker] = useState(false);
@@ -56,9 +59,13 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
       >
          <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
             <View style={styles.container}>
+               <View
+                  style={[styles.headerContent, { paddingTop: insets.top + normalize(28, true) }]}
+               >
+                  <Text style={styles.title}>{t('findARoute')}</Text>
+               </View>
                <View style={styles.contents}>
                   <View style={styles.topContent}>
-                     <Text style={styles.title}>{t('findARoute')}</Text>
                      <View style={styles.form}>
                         <View style={styles.selectRoutesContent}>
                            <View style={styles.leftContent}>

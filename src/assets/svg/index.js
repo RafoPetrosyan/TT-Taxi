@@ -6,7 +6,7 @@ import CloseModalIcon from './CloseModalIcon';
 import CompleteOrderIcon from './CompleteOrderIcon';
 import DownIcon from './DownIcon';
 import DropDownIcon from './DropDownIcon';
-import ErrorIcon from './ErrorIcon';
+import WarningIcon from './WarningIcon';
 import LocationIcon from './LocationIcon';
 import OrdersIcon from './OrdersIcon';
 import PeopleIcon from './PeopleIcon';
@@ -23,7 +23,7 @@ export {
    CompleteOrderIcon,
    DownIcon,
    DropDownIcon,
-   ErrorIcon,
+   WarningIcon,
    LocationIcon,
    OrdersIcon,
    PeopleIcon,

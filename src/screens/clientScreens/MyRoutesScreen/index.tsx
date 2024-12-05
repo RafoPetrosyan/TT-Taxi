@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import LinearGradient from 'react-native-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenProps } from '../../../types';
-import styles from './style.ts';
 import RouteDirectionIcon from '../../../assets/svg/RouteDirectionIcon';
 import normalize from '../../../utils/normalize.ts';
 import CalendarIcon from '../../../assets/svg/CalendarIcon.js';
@@ -14,6 +14,8 @@ import CarIcon from '../../../assets/svg/CarIcon';
 import { DEVICE_WIDTH } from '../../../constants';
 import { useAppDispatch } from '../../../store/hooks.ts';
 import { openModal } from '../../../store/modals';
+import styles from './style.ts';
+import SCREENS from '../../../constants/screens.ts';
 
 interface Car {
    id: string;
@@ -23,6 +25,7 @@ interface Car {
    numberOfPassengers: number;
    address: string;
    car: string;
+   status: string;
 }
 
 const data = [
@@ -34,6 +37,7 @@ const data = [
       numberOfPassengers: 2,
       address: 'Գյումրու ավտոկայան',
       car: 'Կոմֆորտ / Tesla / 55 TT 555',
+      status: 'in_pending',
    },
    {
       id: '2',
@@ -43,11 +47,13 @@ const data = [
       numberOfPassengers: 2,
       address: 'Գյումրու ավտոկայան',
       car: 'Կոմֆորտ / Tesla / 55 TT 555',
+      status: 'in_progress',
    },
 ];
 
 const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const insets = useSafeAreaInsets();
    const dispatch = useAppDispatch();
 
    const onEndReached = () => {};
@@ -56,15 +62,24 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
       dispatch(openModal({ type: 'ORDER_CANCEL' }));
    };
 
+   const goToFollowProgress = () => {
+      navigation.navigate(SCREENS.FOLLOW_PROGRESS);
+   };
+
    const renderItem = ({ item }: { item: Car }) => {
       return (
          <View style={styles.renderItem}>
-            <LinearGradient
-               style={styles.leftContent}
-               colors={['#D6990E', '#E2AB2D', '#FFD77D']}
-               start={{ x: 0.0159, y: 0 }}
-               end={{ x: 1, y: 0 }}
-            />
+            {item.status === 'in_progress' ? (
+               <LinearGradient
+                  style={styles.leftContent}
+                  colors={['#D6990E', '#E2AB2D', '#FFD77D']}
+                  start={{ x: 0.0159, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+               />
+            ) : (
+               <View style={[styles.leftContent, { backgroundColor: '#6AA84F' }]} />
+            )}
+
             <View style={styles.rightContent}>
                <View style={styles.row}>
                   <RouteDirectionIcon />
@@ -97,12 +112,21 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   <Text style={styles.rowValue}>{item.car}</Text>
                </View>
                <View style={styles.buttons}>
-                  <TouchableOpacity onPress={handleCancelOrder}>
-                     <Text style={styles.cancel}>{t('cancel')}</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                     <Text style={[styles.cancel, styles.edit]}>{t('edit')}</Text>
-                  </TouchableOpacity>
+                  {item.status === 'in_pending' ? (
+                     <>
+                        <TouchableOpacity onPress={handleCancelOrder}>
+                           <Text style={styles.cancel}>{t('cancel')}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                           <Text style={[styles.cancel, styles.edit]}>{t('edit')}</Text>
+                        </TouchableOpacity>
+                     </>
+                  ) : (
+                     <TouchableOpacity onPress={goToFollowProgress} style={styles.followProgress}>
+                        <LocationIcon stroke={'#FFFFFF'} width={20} />
+                        <Text style={styles.followText}>{t('followTheProgress')}</Text>
+                     </TouchableOpacity>
+                  )}
                </View>
             </View>
          </View>
@@ -111,9 +135,11 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
    return (
       <View style={styles.container}>
+         <View style={[styles.headerContent, { paddingTop: insets.top + normalize(28, true) }]}>
+            <Text style={styles.title}>{t('myMarches')}</Text>
+         </View>
          <View style={styles.contents}>
             <View style={styles.topContent}>
-               <Text style={styles.title}>{t('myRoutes')}</Text>
                <FlatList
                   data={data}
                   renderItem={renderItem}
@@ -125,7 +151,7 @@ const MyRoutesScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReached={onEndReached}
                   style={{
                      width: DEVICE_WIDTH,
-                     paddingTop: normalize(41),
+                     paddingTop: normalize(16),
                   }}
                />
             </View>

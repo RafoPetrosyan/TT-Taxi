@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-function ErrorIcon(props) {
+function WarningIcon(props) {
    return (
       <Svg
          width={70}
@@ -20,4 +20,4 @@ function ErrorIcon(props) {
    );
 }
 
-export default ErrorIcon;
+export default WarningIcon;
