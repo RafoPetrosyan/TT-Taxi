@@ -16,8 +16,13 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
    },
    topContent: {
-      marginTop: normalize(68, true),
+      marginTop: normalize(16, true),
       flex: 1,
+   },
+   headerContent: {
+      backgroundColor: COLORS.statusBarBackground,
+      width: '100%',
+      paddingBottom: normalize(24, true),
    },
    title: {
       fontSize: 18,
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
       width: normalize(87),
       borderRadius: 46,
       height: normalize(24),
-      backgroundColor: '#4E6E3D',
+      backgroundColor: '#2E7D32',
       justifyContent: 'center',
       alignItems: 'center',
    },

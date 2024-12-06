@@ -16,8 +16,13 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
    },
    topContent: {
-      marginTop: normalize(68, true),
+      marginTop: normalize(20, true),
       flex: 1,
+   },
+   headerContent: {
+      backgroundColor: COLORS.statusBarBackground,
+      width: '100%',
+      paddingBottom: normalize(24, true),
    },
    title: {
       fontSize: 18,
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
       width: normalize(97),
       borderRadius: 46,
       height: normalize(24),
-      backgroundColor: '#CC252B',
+      backgroundColor: '#D59608',
       justifyContent: 'center',
       alignItems: 'center',
    },
@@ -97,6 +102,13 @@ const styles = StyleSheet.create({
       fontSize: 14,
       fontWeight: '400',
       fontFamily: fontFamilies.MONTSERRAT['400'],
+   },
+   see: {
+      color: '#4949EA',
+      fontSize: 14,
+      fontWeight: '400',
+      fontFamily: fontFamilies.MONTSERRAT['400'],
+      marginLeft: 10,
    },
 });
 

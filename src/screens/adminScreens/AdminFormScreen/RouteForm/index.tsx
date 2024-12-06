@@ -1,0 +1,192 @@
+import React from 'react';
+import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import SelectDropdown from 'react-native-select-dropdown';
+import DatePicker from 'react-native-date-picker';
+import { Controller } from 'react-hook-form';
+import { DropDownIcon } from '../../../../assets/svg';
+import styles from '../style.ts';
+import useContainer from './hook.ts';
+
+const options = ['Option 1', 'Option 2', 'Option 3'];
+
+const RouteForm: React.FC = () => {
+   const { onSubmit, control, handleSubmit, errors } = useContainer();
+
+   return (
+      <View style={styles.form}>
+         <View>
+            {/* Dropdown 1 */}
+            <Controller
+               name="dropdown1"
+               control={control}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <SelectDropdown
+                     data={options}
+                     onSelect={onChange}
+                     renderButton={(selectedItem) => (
+                        <View style={styles.input}>
+                           <Text style={styles.placeholder}>{selectedItem || 'Երթի սկզբ.'}</Text>
+                           <DropDownIcon />
+                        </View>
+                     )}
+                     renderItem={(item, index, isSelected) => (
+                        <View
+                           style={{
+                              ...styles.dropdownItemStyle,
+                              ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                           }}
+                        >
+                           <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
+                        </View>
+                     )}
+                     dropdownStyle={styles.dropdownMenuStyle}
+                     showsVerticalScrollIndicator={false}
+                  />
+               )}
+            />
+            {errors.dropdown1 && <Text style={styles.error}>{errors.dropdown1.message}</Text>}
+
+            {/* Dropdown 2 */}
+            <Controller
+               name="dropdown2"
+               control={control}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <SelectDropdown
+                     data={options}
+                     onSelect={onChange}
+                     renderButton={(selectedItem) => (
+                        <View style={styles.input}>
+                           <Text style={styles.placeholder}>{selectedItem || 'Երթի ավարտ'}</Text>
+                           <DropDownIcon />
+                        </View>
+                     )}
+                     renderItem={(item, index, isSelected) => (
+                        <View
+                           style={{
+                              ...styles.dropdownItemStyle,
+                              ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                           }}
+                        >
+                           <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
+                        </View>
+                     )}
+                     dropdownStyle={styles.dropdownMenuStyle}
+                     showsVerticalScrollIndicator={false}
+                  />
+               )}
+            />
+            {errors.dropdown2 && <Text style={styles.error}>{errors.dropdown2.message}</Text>}
+
+            {/* Date Picker */}
+            <Controller
+               name="date"
+               control={control}
+               defaultValue={new Date()}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <>
+                     <TouchableOpacity onPress={() => onChange(new Date())}>
+                        <View style={styles.input}>
+                           <Text style={styles.placeholder}>
+                              {value ? value.toDateString() : 'Ամսաթիվ'}
+                           </Text>
+                        </View>
+                     </TouchableOpacity>
+                     <DatePicker
+                        modal
+                        open={!!value}
+                        date={value || new Date()}
+                        onConfirm={onChange}
+                        onCancel={() => onChange(null)}
+                     />
+                  </>
+               )}
+            />
+            {errors.date && <Text style={styles.error}>{errors.date.message}</Text>}
+
+            {/* Time Picker */}
+            <Controller
+               name="time"
+               control={control}
+               defaultValue={new Date()}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <>
+                     <TouchableOpacity onPress={() => onChange(new Date())}>
+                        <View style={styles.input}>
+                           <Text style={styles.placeholder}>
+                              {value ? value.toLocaleTimeString() : 'Ժամ'}
+                           </Text>
+                        </View>
+                     </TouchableOpacity>
+                     <DatePicker
+                        modal
+                        open={!!value}
+                        date={value || new Date()}
+                        mode="time"
+                        onConfirm={onChange}
+                        onCancel={() => onChange(null)}
+                     />
+                  </>
+               )}
+            />
+            {errors.time && <Text style={styles.error}>{errors.time.message}</Text>}
+
+            {/* Max Passengers */}
+            <Controller
+               name="maxPassengers"
+               control={control}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <TextInput
+                     placeholder="Ուղևորների մաքս. քանակ"
+                     placeholderTextColor="#9AA2AE"
+                     style={styles.input}
+                     value={value}
+                     onChangeText={onChange}
+                     keyboardType="numeric"
+                  />
+               )}
+            />
+            {errors.maxPassengers && (
+               <Text style={styles.error}>{errors.maxPassengers.message}</Text>
+            )}
+
+            {/* Price */}
+            <Controller
+               name="price"
+               control={control}
+               rules={{ required: 'Required field' }}
+               render={({ field: { onChange, value } }) => (
+                  <TextInput
+                     placeholder="Գինը"
+                     placeholderTextColor="#9AA2AE"
+                     style={styles.input}
+                     value={value}
+                     onChangeText={onChange}
+                     keyboardType="numeric"
+                  />
+               )}
+            />
+            {errors.price && <Text style={styles.error}>{errors.price.message}</Text>}
+         </View>
+
+         {/* Submit Button */}
+         <TouchableOpacity onPress={handleSubmit(onSubmit)} style={{ marginTop: 20 }}>
+            <LinearGradient
+               colors={['#D6990E', '#E2AB2D', '#FFD77D']}
+               start={{ x: 0, y: 0 }}
+               end={{ x: 1, y: 0 }}
+               style={styles.gradient}
+            >
+               <Text style={styles.submitText}>Ավելացնել</Text>
+            </LinearGradient>
+         </TouchableOpacity>
+      </View>
+   );
+};
+
+export default RouteForm;

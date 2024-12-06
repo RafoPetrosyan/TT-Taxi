@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, Text, View, TouchableOpacity } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenProps } from '../../../types';
 import normalize from '../../../utils/normalize.ts';
 import { DEVICE_WIDTH } from '../../../constants';
@@ -27,7 +28,7 @@ const data = [
       date: 'Օր։ 13․12․24 | Ժամ։ 12։00',
       driver: 'Անուն Ազգանուն',
       phoneNumber: '+374 77 11 55 11',
-      status: 'pending',
+      status: 'gathering',
    },
    {
       id: '2',
@@ -43,6 +44,8 @@ const data = [
 ];
 
 const ScheduleScreen: React.FC<ScreenProps> = ({ navigation }) => {
+   const insets = useSafeAreaInsets();
+
    const onEndReached = () => {};
 
    const renderItem = ({ item }: { item: Schedule }) => {
@@ -56,11 +59,11 @@ const ScheduleScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   <View
                      style={[
                         styles.status,
-                        item.status === 'ready' && { backgroundColor: '#269B26' },
+                        item.status === 'ready' && { backgroundColor: '#6AA84F' },
                      ]}
                   >
                      <Text style={styles.carTypeText}>
-                        {item.carType === 'pending' ? 'Հավաքվում է' : 'Պատրաստ է'}
+                        {item.status === 'gathering' ? 'Հավաքվում է' : 'Պատրաստ է'}
                      </Text>
                   </View>
                </View>
@@ -102,6 +105,9 @@ const ScheduleScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   <View style={{ flexDirection: 'row' }}>
                      <Text style={styles.textKey}>Ուղևորիների քանակը.</Text>
                      <Text style={styles.textValue}>{item.numberOfPassengers}</Text>
+                     <TouchableOpacity>
+                        <Text style={styles.see}>Տեսնել</Text>
+                     </TouchableOpacity>
                   </View>
                   <View style={styles.buttons}>
                      <TouchableOpacity>
@@ -116,9 +122,11 @@ const ScheduleScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
    return (
       <View style={styles.container}>
+         <View style={[styles.headerContent, { paddingTop: insets.top + normalize(28, true) }]}>
+            <Text style={styles.title}>Ժամանակացույց</Text>
+         </View>
          <View style={styles.contents}>
             <View style={styles.topContent}>
-               <Text style={styles.title}>Ժամանակացույց</Text>
                <FlatList
                   data={data}
                   renderItem={renderItem}
@@ -130,7 +138,6 @@ const ScheduleScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReached={onEndReached}
                   style={{
                      width: DEVICE_WIDTH,
-                     paddingTop: normalize(41),
                   }}
                />
             </View>

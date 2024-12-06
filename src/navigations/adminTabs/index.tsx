@@ -1,46 +1,28 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { IS_IOS_PLATFORM } from '../../constants';
-import STACKS from '../../constants/stacks.ts';
 import COLORS from '../../constants/colors.ts';
 import { AdminTabParamList } from '../types.ts';
 import OrdersIcon from '../../assets/svg/OrdersIcon';
 import OrdersScreen from '../../screens/adminScreens/OrdersScreen';
 import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
 import { fontFamilies } from '../../constants/fonts.ts';
-import CarsStackScreen from '../adminStacks/carsStack';
-import DriversStackScreen from '../adminStacks/driversStack';
 import ScheduleRoutesIcon from '../../assets/svg/ScheduleRoutesIcon';
 import CarTabIcon from '../../assets/svg/CarTabIcon';
 import DriverIcon from '../../assets/svg/DriverIcon';
 import PlusIcon from '../../assets/svg/PlusIcon';
-import { useNavigationState } from '@react-navigation/native';
-import { navigationService } from '../../services/navigations.ts';
-
-const screens = {
-   AdminOrdersStack: 1,
-   AdminScheduleStack: 1,
-   AdminDriversStack: 1,
-   AdminCarsStack: 1,
-   AdminCarsScreen: 1,
-   AdminDriversScreen: 1,
-   AdminSchedulesScreen: 1,
-};
+import SCREENS from '../../constants/screens.ts';
+import CarsScreen from '../../screens/adminScreens/CarsScreen';
+import DriversScreen from '../../screens/adminScreens/DriversScreen';
+import AdminFormScreen from '../../screens/adminScreens/AdminFormScreen';
 
 const Tab = createBottomTabNavigator<AdminTabParamList>();
 
 const AdminTabs: React.FC = () => {
-   const tabState = useNavigationState((state) => state);
-
-   const handleAddButton = () => {
-      const currentScreen = navigationService.getCurrentScreen();
-      console.log(currentScreen, 'currentScreen');
-   };
-
    return (
       <Tab.Navigator
-         screenOptions={() => ({
+         screenOptions={{
             headerShown: false,
             tabBarActiveTintColor: COLORS.brown,
             tabBarInactiveTintColor: COLORS.secondaryText,
@@ -63,50 +45,58 @@ const AdminTabs: React.FC = () => {
             tabBarItemStyle: {
                flex: 1,
             },
-         })}
+         }}
       >
          <Tab.Screen
-            name={STACKS.ADMIN_ORDERS}
+            name={SCREENS.ADMIN_ORDERS}
             component={OrdersScreen}
             options={{
                tabBarLabel: 'Պատվեր',
-               tabBarIcon: ({ focused }) => <OrdersIcon stroke={focused && '#D59608'} />,
+               tabBarIcon: ({ focused }) => (
+                  <OrdersIcon stroke={focused ? '#D59608' : COLORS.secondaryText} />
+               ),
             }}
          />
          <Tab.Screen
-            name={STACKS.ADMIN_SCHEDULE}
+            name={SCREENS.ADMIN_SCHEDULES}
             component={ScheduleScreen}
             options={{
                tabBarLabel: 'Երթեր',
-               tabBarIcon: ({ focused }) => <ScheduleRoutesIcon stroke={focused && '#D59608'} />,
-            }}
-         />
-         <Tab.Screen
-            name="Add"
-            options={{
-               tabBarButton: () => (
-                  <TouchableOpacity style={styles.addButton} onPress={handleAddButton}>
-                     <PlusIcon />
-                  </TouchableOpacity>
+               tabBarIcon: ({ focused }) => (
+                  <ScheduleRoutesIcon stroke={focused ? '#D59608' : COLORS.secondaryText} />
                ),
             }}
-         >
-            {() => null}
-         </Tab.Screen>
+         />
          <Tab.Screen
-            name={STACKS.ADMIN_CARS}
-            component={CarsStackScreen}
+            name={SCREENS.ADMIN_FORMS}
+            component={AdminFormScreen}
             options={{
-               tabBarLabel: 'Մեքենա',
-               tabBarIcon: ({ focused }) => <CarTabIcon stroke={focused && '#D59608'} />,
+               tabBarLabel: '',
+               tabBarIcon: () => (
+                  <View style={styles.addButton}>
+                     <PlusIcon />
+                  </View>
+               ),
             }}
          />
          <Tab.Screen
-            name={STACKS.ADMIN_DRIVERS}
-            component={DriversStackScreen}
+            name={SCREENS.ADMIN_CARS}
+            component={CarsScreen}
+            options={{
+               tabBarLabel: 'Մեքենա',
+               tabBarIcon: ({ focused }) => (
+                  <CarTabIcon stroke={focused ? '#D59608' : COLORS.secondaryText} />
+               ),
+            }}
+         />
+         <Tab.Screen
+            name={SCREENS.ADMIN_DRIVERS}
+            component={DriversScreen}
             options={{
                tabBarLabel: 'Վարորդ',
-               tabBarIcon: ({ focused }) => <DriverIcon stroke={focused && '#D59608'} />,
+               tabBarIcon: ({ focused }) => (
+                  <DriverIcon stroke={focused ? '#D59608' : COLORS.secondaryText} />
+               ),
             }}
          />
       </Tab.Navigator>
@@ -117,7 +107,6 @@ const styles = StyleSheet.create({
    addButton: {
       top: -25,
       position: 'absolute',
-      bottom: 10,
       alignSelf: 'center',
       justifyContent: 'center',
       alignItems: 'center',

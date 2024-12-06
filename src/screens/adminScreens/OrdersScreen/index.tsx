@@ -1,14 +1,15 @@
 import React from 'react';
 import { FlatList, Text, View, TouchableOpacity } from 'react-native';
-import { ScreenProps } from '../../../types';
-import styles from './style.ts';
-import normalize from '../../../utils/normalize.ts';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import LinearGradient from 'react-native-linear-gradient';
+import { ScreenProps } from '../../../types';
+import normalize from '../../../utils/normalize.ts';
 import { DEVICE_WIDTH } from '../../../constants';
 import COLORS from '../../../constants/colors.ts';
 import { useAppDispatch } from '../../../store/hooks.ts';
 import { openModal } from '../../../store/modals';
+import styles from './style.ts';
 
 interface Order {
    id: string;
@@ -46,6 +47,7 @@ const data = [
 
 const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
+   const insets = useSafeAreaInsets();
    const dispatch = useAppDispatch();
 
    const onEndReached = () => {};
@@ -100,9 +102,11 @@ const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
    return (
       <View style={styles.container}>
+         <View style={[styles.headerContent, { paddingTop: insets.top + normalize(28, true) }]}>
+            <Text style={styles.title}>Պատվերներ</Text>
+         </View>
          <View style={styles.contents}>
             <View style={styles.topContent}>
-               <Text style={styles.title}>Պատվերներ</Text>
                <FlatList
                   data={data}
                   renderItem={renderItem}
@@ -114,7 +118,6 @@ const OrdersScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReached={onEndReached}
                   style={{
                      width: DEVICE_WIDTH,
-                     paddingTop: normalize(41),
                   }}
                />
             </View>

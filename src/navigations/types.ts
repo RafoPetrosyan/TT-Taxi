@@ -20,9 +20,9 @@ export type ClientTabParamList = {
 };
 
 export type AdminTabParamList = {
-   AdminScheduleStack: undefined;
-   AdminDriversStack: undefined;
-   AdminCarsStack: undefined;
-   AdminOrdersStack: undefined;
-   Add: undefined;
+   AdminSchedulesScreen: undefined;
+   AdminDriversScreen: undefined;
+   AdminCarsScreen: undefined;
+   AdminOrdersScreen: undefined;
+   AdminFormsScreen: undefined;
 };

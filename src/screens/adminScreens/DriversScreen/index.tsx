@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList, Text, View, TouchableOpacity, Image } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenProps } from '../../../types';
-import normalize from '../../../utils/normalize.ts';
 import { DEVICE_WIDTH } from '../../../constants';
+import normalize from '../../../utils/normalize.ts';
 import styles from './style.ts';
 
 interface Driver {
@@ -31,6 +32,8 @@ const data = [
 ];
 
 const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
+   const insets = useSafeAreaInsets();
+
    const onEndReached = () => {};
 
    const renderItem = ({ item }: { item: Driver }) => {
@@ -50,7 +53,7 @@ const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   <View
                      style={[
                         styles.carType,
-                        item.carType === 'comfort' && { backgroundColor: '#6488EA' },
+                        item.carType === 'comfort' && { backgroundColor: '#334581' },
                      ]}
                   >
                      <Text style={styles.carTypeText}>
@@ -84,9 +87,11 @@ const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
    return (
       <View style={styles.container}>
+         <View style={[styles.headerContent, { paddingTop: insets.top + normalize(28, true) }]}>
+            <Text style={styles.title}>Վարորդներ</Text>
+         </View>
          <View style={styles.contents}>
             <View style={styles.topContent}>
-               <Text style={styles.title}>Վարորդներ</Text>
                <FlatList
                   data={data}
                   renderItem={renderItem}
@@ -98,7 +103,6 @@ const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
                   onEndReached={onEndReached}
                   style={{
                      width: DEVICE_WIDTH,
-                     paddingTop: normalize(41),
                   }}
                />
             </View>

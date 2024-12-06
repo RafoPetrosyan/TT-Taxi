@@ -16,9 +16,14 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'space-between',
    },
+   headerContent: {
+      backgroundColor: COLORS.statusBarBackground,
+      width: '100%',
+      paddingBottom: normalize(24, true),
+   },
    topContent: {
-      marginTop: normalize(68, true),
       flex: 1,
+      marginTop: normalize(24, true),
    },
    title: {
       fontSize: 18,
@@ -29,7 +34,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
    },
    form: {
-      marginTop: normalize(37, true),
       justifyContent: 'space-between',
       flex: 1,
       paddingBottom: normalize(115, true),
