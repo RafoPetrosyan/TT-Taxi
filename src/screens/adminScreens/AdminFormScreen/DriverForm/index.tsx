@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { isString } from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Controller } from 'react-hook-form';
+import { isString } from 'lodash';
 import { DropDownIcon } from '../../../../assets/svg';
 import styles from '../style.ts';
 import useContainer from './hook.ts';
 
-const cars = ['Mercedes-Benz', 'Ford', 'Tesla'];
+const cars = ['Poxos Poxosyan', 'Simon Simonyan'];
 
 const DriverForm: React.FC = () => {
    const { onSubmit, control, handleSubmit, errors } = useContainer();
@@ -16,13 +16,11 @@ const DriverForm: React.FC = () => {
    return (
       <View style={styles.form}>
          <View>
-            {/* License Plate Input */}
+            {/* Full Name */}
             <Controller
                name="fullName"
                control={control}
-               rules={{
-                  required: 'Պարտադիր լրացման դաշտ',
-               }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <TextInput
                      placeholder="Անուն Ազգանուն"
@@ -39,7 +37,7 @@ const DriverForm: React.FC = () => {
                </Text>
             )}
 
-            {/* Model Input */}
+            {/* Car class */}
             <Controller
                name="phoneNumber"
                control={control}
@@ -51,7 +49,6 @@ const DriverForm: React.FC = () => {
                      style={styles.input}
                      value={value}
                      onChangeText={onChange}
-                     keyboardType="phone-pad"
                   />
                )}
             />
@@ -61,7 +58,7 @@ const DriverForm: React.FC = () => {
                </Text>
             )}
 
-            {/* Car Select */}
+            {/* Dropdown 1 */}
             <Controller
                name="car"
                control={control}
@@ -72,8 +69,13 @@ const DriverForm: React.FC = () => {
                      onSelect={onChange}
                      renderButton={(selectedItem) => (
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>
-                              {selectedItem ? selectedItem : 'Մեքենա'}
+                           <Text
+                              style={[
+                                 styles.placeholder,
+                                 selectedItem && styles.selectedPlaceholder,
+                              ]}
+                           >
+                              {selectedItem || 'Մեքենա'}
                            </Text>
                            <DropDownIcon />
                         </View>
@@ -88,8 +90,8 @@ const DriverForm: React.FC = () => {
                            <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
                         </View>
                      )}
-                     showsVerticalScrollIndicator={false}
                      dropdownStyle={styles.dropdownMenuStyle}
+                     showsVerticalScrollIndicator={false}
                   />
                )}
             />

@@ -4,14 +4,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import SelectDropdown from 'react-native-select-dropdown';
 import DatePicker from 'react-native-date-picker';
 import { Controller } from 'react-hook-form';
+import { isString } from 'lodash';
 import { DropDownIcon } from '../../../../assets/svg';
 import styles from '../style.ts';
 import useContainer from './hook.ts';
 
-const options = ['Option 1', 'Option 2', 'Option 3'];
+const routeOptions = ['Գյումրու ավտոկայան', 'Երևան, Սասունցի Դավիթ կայարան'];
 
 const RouteForm: React.FC = () => {
-   const { onSubmit, control, handleSubmit, errors } = useContainer();
+   const {
+      onSubmit,
+      control,
+      handleSubmit,
+      errors,
+      setIsTimePickerOpen,
+      setIsDatePickerOpen,
+      isTimePickerOpen,
+      isDatePickerOpen,
+   } = useContainer();
 
    return (
       <View style={styles.form}>
@@ -20,14 +30,21 @@ const RouteForm: React.FC = () => {
             <Controller
                name="dropdown1"
                control={control}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <SelectDropdown
-                     data={options}
+                     data={routeOptions}
                      onSelect={onChange}
                      renderButton={(selectedItem) => (
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>{selectedItem || 'Երթի սկզբ.'}</Text>
+                           <Text
+                              style={[
+                                 styles.placeholder,
+                                 selectedItem && styles.selectedPlaceholder,
+                              ]}
+                           >
+                              {selectedItem || 'Երթի սկզբ.'}
+                           </Text>
                            <DropDownIcon />
                         </View>
                      )}
@@ -46,20 +63,31 @@ const RouteForm: React.FC = () => {
                   />
                )}
             />
-            {errors.dropdown1 && <Text style={styles.error}>{errors.dropdown1.message}</Text>}
+            {errors.dropdown1 && (
+               <Text style={styles.error}>
+                  {isString(errors.dropdown1.message) ? errors.dropdown1.message : ''}
+               </Text>
+            )}
 
             {/* Dropdown 2 */}
             <Controller
                name="dropdown2"
                control={control}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <SelectDropdown
-                     data={options}
+                     data={routeOptions}
                      onSelect={onChange}
                      renderButton={(selectedItem) => (
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>{selectedItem || 'Երթի ավարտ'}</Text>
+                           <Text
+                              style={[
+                                 styles.placeholder,
+                                 selectedItem && styles.selectedPlaceholder,
+                              ]}
+                           >
+                              {selectedItem || 'Երթի ավարտ'}
+                           </Text>
                            <DropDownIcon />
                         </View>
                      )}
@@ -78,17 +106,20 @@ const RouteForm: React.FC = () => {
                   />
                )}
             />
-            {errors.dropdown2 && <Text style={styles.error}>{errors.dropdown2.message}</Text>}
+            {errors.dropdown2 && (
+               <Text style={styles.error}>
+                  {isString(errors.dropdown2.message) ? errors.dropdown2.message : ''}
+               </Text>
+            )}
 
             {/* Date Picker */}
             <Controller
                name="date"
                control={control}
-               defaultValue={new Date()}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <>
-                     <TouchableOpacity onPress={() => onChange(new Date())}>
+                     <TouchableOpacity onPress={() => setIsDatePickerOpen(true)}>
                         <View style={styles.input}>
                            <Text style={styles.placeholder}>
                               {value ? value.toDateString() : 'Ամսաթիվ'}
@@ -97,25 +128,31 @@ const RouteForm: React.FC = () => {
                      </TouchableOpacity>
                      <DatePicker
                         modal
-                        open={!!value}
+                        open={isDatePickerOpen}
                         date={value || new Date()}
-                        onConfirm={onChange}
-                        onCancel={() => onChange(null)}
+                        onConfirm={(selectedDate) => {
+                           setIsDatePickerOpen(false);
+                           onChange(selectedDate);
+                        }}
+                        onCancel={() => setIsDatePickerOpen(false)}
                      />
                   </>
                )}
             />
-            {errors.date && <Text style={styles.error}>{errors.date.message}</Text>}
+            {errors.date && (
+               <Text style={styles.error}>
+                  {isString(errors.date.message) ? errors.date.message : ''}
+               </Text>
+            )}
 
             {/* Time Picker */}
             <Controller
                name="time"
                control={control}
-               defaultValue={new Date()}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <>
-                     <TouchableOpacity onPress={() => onChange(new Date())}>
+                     <TouchableOpacity onPress={() => setIsTimePickerOpen(true)}>
                         <View style={styles.input}>
                            <Text style={styles.placeholder}>
                               {value ? value.toLocaleTimeString() : 'Ժամ'}
@@ -124,22 +161,29 @@ const RouteForm: React.FC = () => {
                      </TouchableOpacity>
                      <DatePicker
                         modal
-                        open={!!value}
+                        open={isTimePickerOpen}
                         date={value || new Date()}
                         mode="time"
-                        onConfirm={onChange}
-                        onCancel={() => onChange(null)}
+                        onConfirm={(selectedTime) => {
+                           setIsTimePickerOpen(false);
+                           onChange(selectedTime);
+                        }}
+                        onCancel={() => setIsTimePickerOpen(false)}
                      />
                   </>
                )}
             />
-            {errors.time && <Text style={styles.error}>{errors.time.message}</Text>}
+            {errors.time && (
+               <Text style={styles.error}>
+                  {isString(errors.time.message) ? errors.time.message : ''}
+               </Text>
+            )}
 
             {/* Max Passengers */}
             <Controller
                name="maxPassengers"
                control={control}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <TextInput
                      placeholder="Ուղևորների մաքս. քանակ"
@@ -152,14 +196,16 @@ const RouteForm: React.FC = () => {
                )}
             />
             {errors.maxPassengers && (
-               <Text style={styles.error}>{errors.maxPassengers.message}</Text>
+               <Text style={styles.error}>
+                  {isString(errors.maxPassengers.message) ? errors.maxPassengers.message : ''}
+               </Text>
             )}
 
             {/* Price */}
             <Controller
                name="price"
                control={control}
-               rules={{ required: 'Required field' }}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <TextInput
                      placeholder="Գինը"
@@ -171,7 +217,11 @@ const RouteForm: React.FC = () => {
                   />
                )}
             />
-            {errors.price && <Text style={styles.error}>{errors.price.message}</Text>}
+            {errors.price && (
+               <Text style={styles.error}>
+                  {isString(errors.price.message) ? errors.price.message : ''}
+               </Text>
+            )}
          </View>
 
          {/* Submit Button */}

@@ -1,7 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
+import { useState } from 'react';
 
 function useContainer() {
+   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+   const [isTimePickerOpen, setIsTimePickerOpen] = useState(false);
    const {
       control,
       handleSubmit,
@@ -17,6 +20,10 @@ function useContainer() {
       control,
       handleSubmit,
       errors,
+      setIsTimePickerOpen,
+      setIsDatePickerOpen,
+      isTimePickerOpen,
+      isDatePickerOpen,
    };
 }
 

@@ -39,7 +39,7 @@ const AdminFormScreen: React.FC<ScreenProps> = () => {
                         onSelect={handleChangeFormType}
                         renderButton={(selectedItem) => (
                            <View style={styles.input}>
-                              <Text style={styles.placeholder}>
+                              <Text style={[styles.placeholder, styles.selectedPlaceholder]}>
                                  {selectedItem ? selectedItem.label : 'Վարորդ'}
                               </Text>
                               <DropDownIcon />

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      color: '#9AA2AE',
+      color: '#343332',
       fontSize: 12,
       fontWeight: '400',
       fontFamily: fontFamilies.MONTSERRAT[400],
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
       fontSize: 12,
       fontWeight: '400',
       fontFamily: fontFamilies.MONTSERRAT[400],
+   },
+   selectedPlaceholder: {
+      color: '#343332',
    },
    gradient: {
       height: normalize(53, true),

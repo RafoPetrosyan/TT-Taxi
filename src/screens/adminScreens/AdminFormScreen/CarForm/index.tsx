@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { isString } from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Controller } from 'react-hook-form';
+import { isString } from 'lodash';
 import { DropDownIcon } from '../../../../assets/svg';
 import styles from '../style.ts';
 import useContainer from './hook.ts';
 
-const cars = ['Mercedes-Benz', 'Ford', 'Tesla'];
+const drivers = ['Poxos Poxosyan', 'Simon Simonyan'];
 
 const CarForm: React.FC = () => {
    const { onSubmit, control, handleSubmit, errors } = useContainer();
@@ -16,64 +16,109 @@ const CarForm: React.FC = () => {
    return (
       <View style={styles.form}>
          <View>
-            {/* License Plate Input */}
+            {/* Car number */}
             <Controller
-               name="fullName"
-               control={control}
-               rules={{
-                  required: 'Պարտադիր լրացման դաշտ',
-               }}
-               render={({ field: { onChange, value } }) => (
-                  <TextInput
-                     placeholder="Անուն Ազգանուն"
-                     placeholderTextColor="#9AA2AE"
-                     style={styles.input}
-                     value={value}
-                     onChangeText={onChange}
-                  />
-               )}
-            />
-            {errors.fullName && (
-               <Text style={styles.error}>
-                  {isString(errors.fullName.message) ? errors.fullName.message : ''}
-               </Text>
-            )}
-
-            {/* Model Input */}
-            <Controller
-               name="phoneNumber"
+               name="carNumber"
                control={control}
                rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <TextInput
-                     placeholder="Հեռախոսահամար"
+                     placeholder="Հմարանիշը"
                      placeholderTextColor="#9AA2AE"
                      style={styles.input}
                      value={value}
                      onChangeText={onChange}
-                     keyboardType="phone-pad"
                   />
                )}
             />
-            {errors.phoneNumber && (
+            {errors.carNumber && (
                <Text style={styles.error}>
-                  {isString(errors.phoneNumber.message) ? errors.phoneNumber.message : ''}
+                  {isString(errors.carNumber.message) ? errors.carNumber.message : ''}
                </Text>
             )}
 
-            {/* Car Select */}
+            {/* Car Model */}
             <Controller
-               name="car"
+               name="model"
+               control={control}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
+               render={({ field: { onChange, value } }) => (
+                  <TextInput
+                     placeholder="Մոդել"
+                     placeholderTextColor="#9AA2AE"
+                     style={styles.input}
+                     value={value}
+                     onChangeText={onChange}
+                  />
+               )}
+            />
+            {errors.model && (
+               <Text style={styles.error}>
+                  {isString(errors.model.message) ? errors.model.message : ''}
+               </Text>
+            )}
+
+            {/* Car class */}
+            <Controller
+               name="class"
+               control={control}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
+               render={({ field: { onChange, value } }) => (
+                  <TextInput
+                     placeholder="Դասը"
+                     placeholderTextColor="#9AA2AE"
+                     style={styles.input}
+                     value={value}
+                     onChangeText={onChange}
+                  />
+               )}
+            />
+            {errors.class && (
+               <Text style={styles.error}>
+                  {isString(errors.class.message) ? errors.class.message : ''}
+               </Text>
+            )}
+
+            {/* Max Passengers */}
+            <Controller
+               name="maxPassengers"
+               control={control}
+               rules={{ required: 'Պարտադիր լրացման դաշտ' }}
+               render={({ field: { onChange, value } }) => (
+                  <TextInput
+                     placeholder="Ուղևորների մաքս. քանակ"
+                     placeholderTextColor="#9AA2AE"
+                     style={styles.input}
+                     value={value}
+                     onChangeText={onChange}
+                     keyboardType="numeric"
+                  />
+               )}
+            />
+            {errors.maxPassengers && (
+               <Text style={styles.error}>
+                  {isString(errors.maxPassengers.message) ? errors.maxPassengers.message : ''}
+               </Text>
+            )}
+
+            {/* Dropdown 1 */}
+            <Controller
+               name="driver"
                control={control}
                rules={{ required: 'Պարտադիր լրացման դաշտ' }}
                render={({ field: { onChange, value } }) => (
                   <SelectDropdown
-                     data={cars}
+                     data={drivers}
                      onSelect={onChange}
                      renderButton={(selectedItem) => (
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>
-                              {selectedItem ? selectedItem : 'Մեքենա'}
+                           <Text
+                              style={[
+                                 styles.placeholder,
+                                 selectedItem && styles.selectedPlaceholder,
+                              ]}
+                           >
+                              {selectedItem || 'Վարորդ'}
                            </Text>
                            <DropDownIcon />
                         </View>
@@ -88,14 +133,14 @@ const CarForm: React.FC = () => {
                            <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
                         </View>
                      )}
-                     showsVerticalScrollIndicator={false}
                      dropdownStyle={styles.dropdownMenuStyle}
+                     showsVerticalScrollIndicator={false}
                   />
                )}
             />
-            {errors.car && (
+            {errors.driver && (
                <Text style={styles.error}>
-                  {isString(errors.car.message) ? errors.car.message : ''}
+                  {isString(errors.driver.message) ? errors.driver.message : ''}
                </Text>
             )}
          </View>
