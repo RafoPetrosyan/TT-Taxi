@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import drivers from './drivers/index.ts';
 import modals from './modals/index.ts';
+import drivers from './drivers/index.ts';
+import auth from './auth/index.ts';
 
 export const store = configureStore({
    reducer: {
-      drivers,
       modals,
+      drivers,
+      auth,
    },
 });
 

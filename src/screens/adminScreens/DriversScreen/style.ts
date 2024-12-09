@@ -54,6 +54,16 @@ const styles = StyleSheet.create({
       marginTop: normalize(8),
       justifyContent: 'space-between',
    },
+   ratingContent: {
+      flexDirection: 'row',
+   },
+   ratingText: {
+      color: '#818195',
+      fontSize: 12,
+      fontWeight: '400',
+      fontFamily: fontFamilies.MONTSERRAT['400'],
+      marginLeft: normalize(8),
+   },
    textKey: {
       color: COLORS.secondaryText,
       fontSize: 12,

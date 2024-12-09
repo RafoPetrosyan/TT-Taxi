@@ -46,7 +46,6 @@ const AdminFormScreen: React.FC<ScreenProps> = () => {
                            </View>
                         )}
                         renderItem={(item, index, isSelected) => {
-                           console.log(item, '444444');
                            return (
                               <View
                                  style={{

@@ -52,5 +52,6 @@
   "privacy": "Privacy",
   "contactUs": "Contact us",
   "exit": "Exit",
-  "loading": "Loading"
+  "loading": "Loading",
+  "signInError": "Wrong password or phone number"
 }

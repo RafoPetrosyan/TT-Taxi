@@ -4,6 +4,7 @@ import { StatusBar, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 import { navigationService } from './src/services/navigations.ts';
 import { store } from './src/store/store.ts';
 import Stacks from './src/navigations/stacks.tsx';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
                <NavigationContainer ref={navigationService.navigationRef}>
                   <Stacks />
                   <ModalRoot content={undefined} />
+                  <Toast />
                </NavigationContainer>
             </SafeAreaProvider>
          </View>

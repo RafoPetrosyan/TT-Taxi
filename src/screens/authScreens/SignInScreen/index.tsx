@@ -16,6 +16,9 @@ import styles from './style.ts';
 import COLORS from '../../../constants/colors.ts';
 import { IS_IOS_PLATFORM } from '../../../constants';
 import SCREENS from '../../../constants/screens.ts';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks.ts';
+import { signIn } from '../../../store/auth/operations.ts';
+import Loader from '../../../components/Loader';
 
 type FormData = {
    phoneNumber: string;
@@ -23,7 +26,9 @@ type FormData = {
 };
 
 const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
+   const { loading } = useAppSelector((state) => state.auth);
    const { t } = useTranslation();
+   const dispatch = useAppDispatch();
    const {
       control,
       handleSubmit,
@@ -32,7 +37,13 @@ const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
    const onSubmit = (data: FormData) => {
       console.log(data);
-      navigation.navigate(SCREENS.FIND_ROUTE);
+      dispatch(
+         signIn({
+            phone: data.phoneNumber,
+            password: data.password,
+         }),
+      );
+      // navigation.navigate(SCREENS.FIND_ROUTE);
    };
 
    const goToSignUp = () => {
@@ -45,6 +56,7 @@ const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
          behavior={IS_IOS_PLATFORM ? 'padding' : undefined}
          keyboardVerticalOffset={IS_IOS_PLATFORM ? 60 : 0}
       >
+         <Loader visible={loading} />
          <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
             <View style={styles.container}>
                <View style={styles.contents}>

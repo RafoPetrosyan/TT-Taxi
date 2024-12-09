@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Rating } from 'react-native-ratings';
 import { ScreenProps } from '../../../types';
 import { DEVICE_WIDTH } from '../../../constants';
 import normalize from '../../../utils/normalize.ts';
@@ -12,6 +13,7 @@ interface Driver {
    car: string;
    phoneNumber: string;
    carType: string;
+   rating: number;
 }
 
 const data = [
@@ -21,6 +23,7 @@ const data = [
       car: 'Ֆորդ / 00 TT 000',
       carType: 'economy',
       phoneNumber: '+374 77 11 55 11',
+      rating: 4.9,
    },
    {
       id: '2',
@@ -28,6 +31,7 @@ const data = [
       car: 'Ֆորդ / 00 TT 000',
       carType: 'comfort',
       phoneNumber: '+374 77 11 55 11',
+      rating: 3,
    },
 ];
 
@@ -59,6 +63,19 @@ const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
                      <Text style={styles.carTypeText}>
                         {item.carType === 'economy' ? 'Էկոնոմ' : 'կոնֆորտ'}
                      </Text>
+                  </View>
+               </View>
+
+               <View style={styles.row}>
+                  <View style={styles.ratingContent}>
+                     <Rating
+                        showRating={false}
+                        imageSize={13}
+                        readonly={true}
+                        startingValue={item.rating}
+                        ratingColor={'#FFA012'}
+                     />
+                     <Text style={styles.ratingText}>{item.rating}</Text>
                   </View>
                </View>
 

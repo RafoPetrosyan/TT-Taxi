@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import SelectDropdown from 'react-native-select-dropdown';
 import DatePicker from 'react-native-date-picker';
 import { Controller } from 'react-hook-form';
+import moment from 'moment/moment';
 import { isString } from 'lodash';
 import i18n from 'i18next';
 import { DropDownIcon } from '../../../../assets/svg';
@@ -124,13 +125,12 @@ const RouteForm: React.FC = () => {
                   <>
                      <TouchableOpacity onPress={() => setIsDatePickerOpen(true)}>
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>
-                              {value ? value.toDateString() : 'Ամսաթիվ'}
+                           <Text style={[styles.placeholder, value && styles.selectedPlaceholder]}>
+                              {value ? moment(value).format('L') : 'Ամսաթիվ'}
                            </Text>
                         </View>
                      </TouchableOpacity>
                      <DatePicker
-                        locale={i18n.language}
                         modal
                         open={isDatePickerOpen}
                         date={value || new Date()}
@@ -139,6 +139,11 @@ const RouteForm: React.FC = () => {
                            onChange(selectedDate);
                         }}
                         onCancel={() => setIsDatePickerOpen(false)}
+                        locale={i18n.language}
+                        mode="date"
+                        confirmText={'Հաստատել'}
+                        cancelText={'Չեղարկել'}
+                        title={'Ընտրեք Ամսաթիվ'}
                      />
                   </>
                )}
@@ -158,13 +163,14 @@ const RouteForm: React.FC = () => {
                   <>
                      <TouchableOpacity onPress={() => setIsTimePickerOpen(true)}>
                         <View style={styles.input}>
-                           <Text style={styles.placeholder}>
-                              {value ? value.toLocaleTimeString() : 'Ժամ'}
+                           <Text style={[styles.placeholder, value && styles.selectedPlaceholder]}>
+                              {value ? moment(value).format('HH:mm') : 'Ժամ'}
                            </Text>
                         </View>
                      </TouchableOpacity>
                      <DatePicker
-                        locale={i18n.language}
+                        locale="en_GB"
+                        is24hourSource="locale"
                         modal
                         open={isTimePickerOpen}
                         date={value || new Date()}
@@ -174,6 +180,9 @@ const RouteForm: React.FC = () => {
                            onChange(selectedTime);
                         }}
                         onCancel={() => setIsTimePickerOpen(false)}
+                        confirmText={'Հաստատել'}
+                        cancelText={'Չեղարկել'}
+                        title={'Ընտրեք Ժամը'}
                      />
                   </>
                )}
