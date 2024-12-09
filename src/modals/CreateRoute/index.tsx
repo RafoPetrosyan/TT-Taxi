@@ -52,6 +52,7 @@ const CreateRoute: React.FC<ModalProps> = ({ onClose }) => {
                      }}
                      showsVerticalScrollIndicator={false}
                      dropdownStyle={styles.dropdownMenuStyle}
+                     statusBarTranslucent={true}
                   />
                </View>
                <View style={styles.bottomContent}>

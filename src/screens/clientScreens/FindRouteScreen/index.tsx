@@ -98,6 +98,7 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
                                  }}
                                  showsVerticalScrollIndicator={false}
                                  dropdownStyle={styles.dropdownMenuStyle}
+                                 statusBarTranslucent={true}
                               />
 
                               <View style={styles.divider}></View>
@@ -132,6 +133,7 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
                                  }}
                                  showsVerticalScrollIndicator={false}
                                  dropdownStyle={styles.dropdownMenuStyle}
+                                 statusBarTranslucent={true}
                               />
                            </View>
 
@@ -200,6 +202,7 @@ const FindRouteScreen: React.FC<ScreenProps> = ({ navigation }) => {
                               }}
                               showsVerticalScrollIndicator={false}
                               dropdownStyle={styles.dropdownMenuStyle}
+                              statusBarTranslucent={true}
                            />
 
                            <TouchableOpacity

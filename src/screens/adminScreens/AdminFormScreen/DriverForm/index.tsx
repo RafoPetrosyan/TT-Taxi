@@ -92,6 +92,7 @@ const DriverForm: React.FC = () => {
                      )}
                      dropdownStyle={styles.dropdownMenuStyle}
                      showsVerticalScrollIndicator={false}
+                     statusBarTranslucent={true}
                   />
                )}
             />

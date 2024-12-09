@@ -5,6 +5,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import DatePicker from 'react-native-date-picker';
 import { Controller } from 'react-hook-form';
 import { isString } from 'lodash';
+import i18n from 'i18next';
 import { DropDownIcon } from '../../../../assets/svg';
 import styles from '../style.ts';
 import useContainer from './hook.ts';
@@ -60,6 +61,7 @@ const RouteForm: React.FC = () => {
                      )}
                      dropdownStyle={styles.dropdownMenuStyle}
                      showsVerticalScrollIndicator={false}
+                     statusBarTranslucent={true}
                   />
                )}
             />
@@ -103,6 +105,7 @@ const RouteForm: React.FC = () => {
                      )}
                      dropdownStyle={styles.dropdownMenuStyle}
                      showsVerticalScrollIndicator={false}
+                     statusBarTranslucent={true}
                   />
                )}
             />
@@ -127,6 +130,7 @@ const RouteForm: React.FC = () => {
                         </View>
                      </TouchableOpacity>
                      <DatePicker
+                        locale={i18n.language}
                         modal
                         open={isDatePickerOpen}
                         date={value || new Date()}
@@ -160,6 +164,7 @@ const RouteForm: React.FC = () => {
                         </View>
                      </TouchableOpacity>
                      <DatePicker
+                        locale={i18n.language}
                         modal
                         open={isTimePickerOpen}
                         date={value || new Date()}

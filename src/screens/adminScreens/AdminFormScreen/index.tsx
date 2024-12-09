@@ -60,6 +60,7 @@ const AdminFormScreen: React.FC<ScreenProps> = () => {
                         }}
                         showsVerticalScrollIndicator={false}
                         dropdownStyle={styles.dropdownMenuStyle}
+                        statusBarTranslucent={true}
                      />
                      <Component />
                   </View>
