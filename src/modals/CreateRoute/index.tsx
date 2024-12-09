@@ -3,7 +3,7 @@ import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import CloseModalIcon from '../../assets/svg/CloseModalIcon';
 import COLORS from '../../constants/colors.ts';
-import { fontFamilies } from '../../constants/fonts.ts';
+import { fontFamilies } from '@constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
 import { ModalProps } from '../types.ts';
 import DropDownIcon from '../../assets/svg/DropDownIcon';

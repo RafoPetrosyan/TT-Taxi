@@ -7,6 +7,7 @@ import OTPVerificationScreen from '../screens/authScreens/OTPVerificationScreen'
 import SignInScreen from '../screens/authScreens/SignInScreen';
 import SignUpScreen from '../screens/authScreens/SignUpScreen';
 import PhoneSignInScreen from '../screens/authScreens/PhoneSignInScreen';
+import SelectLanguageScreen from '../screens/authScreens/SelectLanguageScreen';
 import STACKS from '../constants/stacks.ts';
 import { authService } from '../services/auth.ts';
 import { useAppDispatch, useAppSelector } from '../store/hooks.ts';
@@ -22,6 +23,7 @@ const AuthStack = createStackNavigator<AuthParamList>();
 
 const AuthNavigator = () => (
    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name={SCREENS.WELCOME_SCREEN} component={SelectLanguageScreen} />
       <AuthStack.Screen name={SCREENS.WELCOME_SCREEN} component={WelcomeScreen} />
       <AuthStack.Screen name={SCREENS.OTP_VERIFICATION} component={OTPVerificationScreen} />
       <AuthStack.Screen name={SCREENS.SIGN_IN_SCREEN} component={SignInScreen} />

@@ -3,7 +3,7 @@ import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import CloseModalIcon from '../../assets/svg/CloseModalIcon';
 import { useTranslation } from 'react-i18next';
 import COLORS from '../../constants/colors.ts';
-import { fontFamilies } from '../../constants/fonts.ts';
+import { fontFamilies } from '@constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
 import WarningIcon from '../../assets/svg/WarningIcon';
 import { ModalProps } from '../types.ts';
