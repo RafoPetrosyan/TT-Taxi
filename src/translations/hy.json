@@ -53,5 +53,12 @@
   "contactUs": "Կապ մեր հետ",
   "exit": "Ելք",
   "loading": "Բեռնվում է",
-  "signInError": "Սխալ գաղտաբառ կամ հեռախոսահամար"
+  "signInError": "Սխալ գաղտաբառ կամ հեռախոսահամար",
+  "selectLanguage": "Ընտրել լեզուն",
+  "next": "Հաջորդը",
+  "phoneNumberIsRequired": "Հեռախոսահամարը պարտադիր է",
+  "passwordIsRequired": "Գաղտնաբառը պարտադիր է",
+  "invalidPhoneNumber": "Սխալ հեռախոսահամար",
+  "passwordMinLength": "Գաղտնաբառը պետք է պարունակի առնվազն {{length}} նիշ",
+  "continue": "Շարունակել"
 }

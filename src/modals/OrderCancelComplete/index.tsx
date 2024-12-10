@@ -5,7 +5,7 @@ import { closeModal } from '../../store/modals';
 import CloseModalIcon from '../../assets/svg/CloseModalIcon';
 import { useTranslation } from 'react-i18next';
 import COLORS from '../../constants/colors.ts';
-import { fontFamilies } from '@constants/fonts.ts';
+import { fontFamilies } from '../../constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
 import SuccessIcon from '../../assets/svg/SuccessIcon';
 

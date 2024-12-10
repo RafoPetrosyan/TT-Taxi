@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { fontFamilies } from '@constants/fonts.ts';
 import COLORS from '../../constants/colors.ts';
+import { fontFamilies } from '../../constants/fonts.ts';
 
 type Props = {
    visible: boolean;

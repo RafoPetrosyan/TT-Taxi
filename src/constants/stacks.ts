@@ -7,6 +7,7 @@ const STACKS = {
    ADMIN_DRIVERS: 'AdminDriversStack',
    ADMIN_CARS: 'AdminCarsStack',
    ADMIN_STACK: 'AdminStack',
+   DRIVER_STACK: 'DriverStack',
 } as const;
 
 export default STACKS;

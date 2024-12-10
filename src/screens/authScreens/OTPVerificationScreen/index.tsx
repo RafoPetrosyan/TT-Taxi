@@ -50,7 +50,7 @@ const OTPVerificationScreen: React.FC<ScreenProps> = ({ navigation }) => {
                            <Text style={styles.firstButtonText}>{t('confirm')}</Text>
                         </LinearGradient>
                      </TouchableOpacity>
-                     <View style={styles.secondButton}></View>
+                     <View style={styles.secondButton} />
                   </View>
                </View>
             </View>

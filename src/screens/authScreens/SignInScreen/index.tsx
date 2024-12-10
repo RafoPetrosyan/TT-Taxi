@@ -12,13 +12,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { Controller, useForm } from 'react-hook-form';
 import { ScreenProps } from '../../../types';
-import styles from './style.ts';
 import COLORS from '../../../constants/colors.ts';
 import { IS_IOS_PLATFORM } from '../../../constants';
 import SCREENS from '../../../constants/screens.ts';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks.ts';
 import { signIn } from '../../../store/auth/operations.ts';
 import Loader from '../../../components/Loader';
+import formatAndValidatePhoneNumber from '../../../utils/formatAndValidatePhoneNumber.ts';
+import styles from './style.ts';
 
 type FormData = {
    phoneNumber: string;
@@ -33,17 +34,23 @@ const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
       control,
       handleSubmit,
       formState: { errors },
+      setError,
    } = useForm<FormData>();
 
    const onSubmit = (data: FormData) => {
-      console.log(data);
+      const formattedPhone = formatAndValidatePhoneNumber(data.phoneNumber);
+
+      if (!formattedPhone) {
+         setError('phoneNumber', { type: 'custom', message: t('invalidPhoneNumber') });
+         return;
+      }
+
       dispatch(
          signIn({
-            phone: data.phoneNumber,
+            phone: formattedPhone,
             password: data.password,
          }),
       );
-      // navigation.navigate(SCREENS.FIND_ROUTE);
    };
 
    const goToSignUp = () => {
@@ -70,7 +77,7 @@ const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
                         <Controller
                            control={control}
                            name="phoneNumber"
-                           rules={{ required: 'Phone number is required' }}
+                           rules={{ required: t('phoneNumberIsRequired') }}
                            render={({ field: { onChange, value } }) => (
                               <TextInput
                                  style={[styles.input, errors.phoneNumber && styles.inputError]}
@@ -89,7 +96,9 @@ const SignInScreen: React.FC<ScreenProps> = ({ navigation }) => {
                         <Controller
                            control={control}
                            name="password"
-                           rules={{ required: 'Password is required' }}
+                           rules={{
+                              required: t('passwordIsRequired'),
+                           }}
                            render={({ field: { onChange, value } }) => (
                               <TextInput
                                  style={[styles.input, errors.password && styles.inputError]}

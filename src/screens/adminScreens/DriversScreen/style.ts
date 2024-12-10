@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import COLORS from '../../../constants/colors.ts';
 import normalize from '../../../utils/normalize.ts';
-import { fontFamilies } from '@constants/fonts.ts';
+import { fontFamilies } from '../../../constants/fonts.ts';
 
 const styles = StyleSheet.create({
    container: {
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
    buttons: {
       flexDirection: 'row',
       marginTop: 15,
+      justifyContent: 'flex-end',
    },
    delete: {
       color: COLORS.danger,
@@ -118,6 +119,10 @@ const styles = StyleSheet.create({
       fontSize: 14,
       fontWeight: '400',
       fontFamily: fontFamilies.MONTSERRAT['400'],
+   },
+   seeRating: {
+      marginRight: normalize(15),
+      color: '#D59608',
    },
    backgroundImage: {
       position: 'absolute',

@@ -1,54 +1,89 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import SelectDropdown from 'react-native-select-dropdown';
 import { ScreenProps } from '../../../types';
-import styles from './style.ts';
 import SCREENS from '../../../constants/screens.ts';
+import styles from './style.ts';
+import { DropDownIcon, FlagArmIcon, FlagEngIcon, FlagRusIcon } from '../../../assets/svg';
+
+const languages = [
+   { value: 'hy', label: 'ARM', icon: <FlagArmIcon /> },
+   { value: 'en', label: 'ENG', icon: <FlagEngIcon /> },
+   { value: 'ru', label: 'RUS', icon: <FlagRusIcon /> },
+];
 
 const SelectLanguageScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
 
-   const goToSignIn = () => {
-      navigation.navigate(SCREENS.SIGN_IN_SCREEN);
+   const activeItem = useMemo(() => {
+      return languages.find((e) => e.value === i18n.language);
+   }, [i18n.language]);
+
+   const goToNextScreen = () => {
+      navigation.navigate(SCREENS.WELCOME_SCREEN);
    };
 
-   const goToSignUp = () => {
-      navigation.navigate(SCREENS.SIGN_UP_SCREEN);
+   const handleChangeLanguage = (item: any) => {
+      i18n.changeLanguage(item.value);
    };
 
    return (
       <View style={styles.container}>
-         <ImageBackground
-            source={require('../../../assets/images/welcomeBg.png')}
-            resizeMode="stretch"
-            style={styles.image}
-         >
+         <View style={styles.background}>
             <View style={styles.topContent}>
                <Image
                   style={styles.logo}
                   resizeMode={'contain'}
                   source={require('../../../assets/images/logo.png')}
                />
-               <Text style={styles.title}>{t('fastAndComfortable')}</Text>
-               <Text style={styles.subtitle}>{t('theBestPlaceToTravel')}</Text>
+               <Text style={styles.title}>{t('selectLanguage')}</Text>
+               <SelectDropdown
+                  data={languages}
+                  onSelect={handleChangeLanguage}
+                  defaultValue={activeItem}
+                  renderButton={() => (
+                     <View style={styles.selectItem}>
+                        <View style={styles.renderButtonLeft}>
+                           {activeItem?.icon}
+                           <Text style={styles.placeholder}>{activeItem?.label || ''}</Text>
+                        </View>
+                        <DropDownIcon />
+                     </View>
+                  )}
+                  renderItem={(item, index, isSelected) => {
+                     return (
+                        <View
+                           style={{
+                              ...styles.dropdownItemStyle,
+                              ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                           }}
+                        >
+                           <Text style={styles.dropdownItemTxtStyle}>{item.label}</Text>
+                        </View>
+                     );
+                  }}
+                  showsVerticalScrollIndicator={false}
+                  dropdownStyle={styles.dropdownMenuStyle}
+                  statusBarTranslucent={true}
+               />
             </View>
             <View style={styles.bottomContent}>
-               <TouchableOpacity style={styles.firstButton} onPress={goToSignIn}>
+               <TouchableOpacity style={styles.firstButton} onPress={goToNextScreen}>
                   <LinearGradient
                      colors={['#D6990E', '#E2AB2D', '#FFD77D']}
                      start={{ x: 0, y: 0 }}
                      end={{ x: 1, y: 0 }}
                      style={styles.gradient}
                   >
-                     <Text style={styles.firstButtonText}>{t('signIn')}</Text>
+                     <Text style={styles.firstButtonText}>{t('next')}</Text>
                   </LinearGradient>
                </TouchableOpacity>
-               <TouchableOpacity style={styles.secondButton} onPress={goToSignUp}>
-                  <Text style={styles.secondButtonText}>{t('signUp')}</Text>
-               </TouchableOpacity>
+               <View style={styles.secondButton} />
             </View>
-         </ImageBackground>
+         </View>
       </View>
    );
 };

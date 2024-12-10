@@ -11,16 +11,13 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
    },
    topContent: {
-      marginTop: normalize(83, true),
+      marginTop: normalize(123, true),
+      alignItems: 'center',
       flex: 1,
    },
-   textInputStyle: {
-      borderWidth: 0.5,
-      borderBottomWidth: 0.5,
-      borderColor: '#DEDEE8',
-      width: normalize(72),
-      height: normalize(74),
-      borderRadius: 7,
+   logo: {
+      width: normalize(146),
+      height: normalize(204, true),
    },
    bottomContent: {
       alignItems: 'center',
@@ -33,24 +30,33 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'space-between',
    },
-   form: {
-      marginTop: normalize(70, true),
-   },
-   title: {
-      fontSize: 24,
-      fontWeight: '500',
-      color: COLORS.primaryText,
-      marginBottom: 5,
-      fontFamily: fontFamilies.MONTSERRAT[500],
-      lineHeight: 29,
-      marginTop: normalize(59, true),
-   },
-   subtitle: {
+   errorText: {
+      color: COLORS.danger,
       fontSize: 14,
+      marginBottom: 10,
+   },
+   inputError: {
+      borderColor: COLORS.danger,
+   },
+   form: {
+      marginTop: normalize(50, true),
+   },
+   info: {
+      maxWidth: normalize(354),
       color: COLORS.secondaryText,
-      marginBottom: 30,
-      fontFamily: fontFamilies.MONTSERRAT[400],
-      lineHeight: 18,
+      fontSize: 12,
+      fontWeight: '300',
+      fontFamily: fontFamilies.MONTSERRAT['300'],
+      lineHeight: 17,
+   },
+   input: {
+      width: normalize(354),
+      height: normalize(52, true),
+      borderColor: COLORS.inputBorder,
+      borderWidth: 1,
+      paddingHorizontal: normalize(16),
+      borderRadius: 7,
+      marginTop: 8,
    },
    gradient: {
       height: normalize(53, true),
@@ -75,22 +81,6 @@ const styles = StyleSheet.create({
       color: COLORS.secondaryText,
       fontFamily: fontFamilies.MONTSERRAT[400],
       fontSize: 14,
-   },
-   resendContent: {
-      marginTop: normalize(49, true),
-      alignItems: 'center',
-   },
-   time: {
-      color: '#9AA2AE',
-      fontFamily: fontFamilies.MONTSERRAT['500'],
-      fontWeight: '500',
-      fontSize: 20,
-   },
-   resend: {
-      fontWeight: '500',
-      fontSize: 20,
-      color: COLORS.brown,
-      fontFamily: fontFamilies.MONTSERRAT['500'],
    },
 });
 

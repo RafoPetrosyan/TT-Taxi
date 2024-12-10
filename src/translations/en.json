@@ -53,5 +53,12 @@
   "contactUs": "Contact us",
   "exit": "Exit",
   "loading": "Loading",
-  "signInError": "Wrong password or phone number"
+  "signInError": "Wrong password or phone number",
+  "selectLanguage": "Select Language",
+  "next": "Next",
+  "phoneNumberIsRequired": "Phone number is required",
+  "passwordIsRequired": "Password is required",
+  "invalidPhoneNumber": "Invalid phone number",
+  "passwordMinLength": "Password must be at least {{length}} characters long",
+  "continue": "Continue"
 }

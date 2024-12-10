@@ -7,7 +7,7 @@ import { AdminTabParamList } from '../types.ts';
 import OrdersIcon from '../../assets/svg/OrdersIcon';
 import OrdersScreen from '../../screens/adminScreens/OrdersScreen';
 import ScheduleScreen from '../../screens/adminScreens/ScheduleScreen';
-import { fontFamilies } from '@constants/fonts.ts';
+import { fontFamilies } from '../../constants/fonts.ts';
 import ScheduleRoutesIcon from '../../assets/svg/ScheduleRoutesIcon';
 import CarTabIcon from '../../assets/svg/CarTabIcon';
 import DriverIcon from '../../assets/svg/DriverIcon';

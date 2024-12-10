@@ -1,6 +1,7 @@
 const SCREENS = {
    PHONE_SIGN_IN: 'PhoneSignInScreen',
-   WELCOME_SCREEN: 'WelcomeScreenScreen',
+   WELCOME_SCREEN: 'WelcomeScreen',
+   SELECT_LANGUAGE_SCREEN: 'SelectLanguageScreen',
    SIGN_UP_SCREEN: 'SignUpScreen',
    SIGN_IN_SCREEN: 'SignInScreen',
    OTP_VERIFICATION: 'OTPVerificationScreen',
@@ -17,6 +18,8 @@ const SCREENS = {
    ADMIN_SCHEDULES: 'AdminSchedulesScreen',
    ADMIN_SCHEDULES_FORM: 'AdminSchedulesFormScreen',
    ADMIN_FORMS: 'AdminFormsScreen',
+   DRIVER_SCHEDULES: 'DriverSchedulesScreen',
+   FORGOT_PASSWORD: 'ForgotPasswordScreen',
 } as const;
 
 export default SCREENS;

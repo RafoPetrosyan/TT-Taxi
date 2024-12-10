@@ -6,7 +6,7 @@ import CloseModalIcon from '../../assets/svg/CloseModalIcon';
 import CompleteOrderIcon from '../../assets/svg/CompleteOrderIcon';
 import { useTranslation } from 'react-i18next';
 import COLORS from '../../constants/colors.ts';
-import { fontFamilies } from '@constants/fonts.ts';
+import { fontFamilies } from '../../constants/fonts.ts';
 import normalize from '../../utils/normalize.ts';
 
 const OrderComplete: React.FC = () => {

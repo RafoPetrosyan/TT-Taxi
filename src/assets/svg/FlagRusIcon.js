@@ -4,8 +4,8 @@ import Svg, { Path, Defs, G, ClipPath, Rect } from 'react-native-svg';
 function FlagRusIcon(props) {
    return (
       <Svg
-         width={18}
-         height={12}
+         width={24}
+         height={18}
          viewBox="0 0 18 12"
          fill="none"
          xmlns="http://www.w3.org/2000/svg"

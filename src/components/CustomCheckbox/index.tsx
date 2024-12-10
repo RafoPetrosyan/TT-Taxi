@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet, Text } from 'react-native';
-import { fontFamilies } from '@constants/fonts.ts';
 import CheckedIcon from '../../assets/svg/CheckedIcon';
 import normalize from '../../utils/normalize.ts';
 import COLORS from '../../constants/colors.ts';
+import { fontFamilies } from '../../constants/fonts.ts';
 
 type Props = {
    label: string;

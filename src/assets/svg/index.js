@@ -13,6 +13,9 @@ import PeopleIcon from './PeopleIcon';
 import ReplaceIcon from './ReplaceIcon';
 import RouteDirectionIcon from './RouteDirectionIcon';
 import SuccessIcon from './SuccessIcon';
+import FlagArmIcon from './FlagArmIcon';
+import FlagEngIcon from './FlagEngIcon';
+import FlagRusIcon from './FlagRusIcon';
 
 export {
    CalendarIcon,
@@ -30,4 +33,7 @@ export {
    ReplaceIcon,
    RouteDirectionIcon,
    SuccessIcon,
+   FlagArmIcon,
+   FlagEngIcon,
+   FlagRusIcon,
 };

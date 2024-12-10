@@ -5,6 +5,8 @@ import { Rating } from 'react-native-ratings';
 import { ScreenProps } from '../../../types';
 import { DEVICE_WIDTH } from '../../../constants';
 import normalize from '../../../utils/normalize.ts';
+import { useAppDispatch } from '../../../store/hooks.ts';
+import { openModal } from '../../../store/modals';
 import styles from './style.ts';
 
 interface Driver {
@@ -37,8 +39,13 @@ const data = [
 
 const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const insets = useSafeAreaInsets();
+   const dispatch = useAppDispatch();
 
    const onEndReached = () => {};
+
+   const seeReviews = () => {
+      dispatch(openModal({ type: 'REVIEWS_LIST' }));
+   };
 
    const renderItem = ({ item }: { item: Driver }) => {
       return (
@@ -91,11 +98,14 @@ const DriversScreen: React.FC<ScreenProps> = ({ navigation }) => {
                      <Text style={styles.textKey}>Հեռ.</Text>
                      <Text style={styles.textValue}>{item.phoneNumber}</Text>
                   </View>
-                  <View style={styles.buttons}>
-                     <TouchableOpacity>
-                        <Text style={styles.edit}>Փոփոխել</Text>
-                     </TouchableOpacity>
-                  </View>
+               </View>
+               <View style={styles.buttons}>
+                  <TouchableOpacity onPress={seeReviews}>
+                     <Text style={[styles.edit, styles.seeRating]}>Տեսնել վարկանիշը</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                     <Text style={styles.edit}>Փոփոխել</Text>
+                  </TouchableOpacity>
                </View>
             </View>
          </View>

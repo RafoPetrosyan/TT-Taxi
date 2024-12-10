@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import COLORS from '../../../constants/colors.ts';
 import normalize from '../../../utils/normalize.ts';
-import { fontFamilies } from '@constants/fonts.ts';
 import dropDownStyles from '../../../constants/dropDownStyles.ts';
+import { fontFamilies } from '../../../constants/fonts.ts';
 
 const styles = StyleSheet.create({
    container: {

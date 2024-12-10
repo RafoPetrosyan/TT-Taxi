@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { showToast } from '@utils/toast.ts';
 import httpClient from '../../services/httpClient.ts';
-import { authService } from '@services/auth.ts';
 import i18n from '../../translations/i18n.ts';
 import { CurrentUser, SignInPayload, SignInResponse } from './types.ts';
-import { navigationService } from '@services/navigations.ts';
 import SCREENS from '../../constants/screens.ts';
 import STACKS from '../../constants/stacks.ts';
+import { navigationService } from '../../services/navigations.ts';
+import { showToast } from '../../utils/toast.ts';
+import { authService } from '../../services/auth.ts';
 
 export const signIn = createAsyncThunk<CurrentUser, SignInPayload>(
    'auth/signIn',

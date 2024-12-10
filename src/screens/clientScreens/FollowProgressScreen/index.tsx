@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenProps } from '../../../types';
 import normalize from '../../../utils/normalize.ts';
-import styles from './style.ts';
 import BackIcon from '../../../assets/svg/BackIcon';
+import styles from './style.ts';
 
 const FollowProgressScreen: React.FC<ScreenProps> = ({ navigation }) => {
    const { t } = useTranslation();
